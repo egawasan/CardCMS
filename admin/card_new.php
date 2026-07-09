@@ -148,6 +148,9 @@ CardCMS 管理画面
 </header>
 
 <div class="container">
+	<form action="../api/save_card.php"
+		method="post"
+		enctype="multipart/form-data">
 
 <h2>📄 新しいカード</h2>
 
@@ -167,7 +170,11 @@ CardCMS 管理画面
 
 <label>タイトル</label>
 
-<input type="text" placeholder="タイトルを入力">
+<input
+	type="text"
+	name="title"
+	placeholder="タイトルを入力"
+	required>
 
 </div>
 
@@ -175,7 +182,7 @@ CardCMS 管理画面
 
 <label>カテゴリー</label>
 
-<select>
+<select name="category">
 
 <option>お知らせ</option>
 
@@ -193,7 +200,9 @@ CardCMS 管理画面
 
 <label>本文</label>
 
-<textarea placeholder="本文を入力してください"></textarea>
+<textarea
+	name="body"
+	placeholder="本文を入力してください"></textarea>
 
 </div>
 
@@ -215,7 +224,7 @@ CardCMS 管理画面
 
 <br><br>
 
-<input type="file">
+<input type="file" name="image">
 
 </div>
 
@@ -225,7 +234,10 @@ CardCMS 管理画面
 
 <label>表示順</label>
 
-<input type="number" value="10">
+<input
+	type="number"
+	name="sort_order"
+	value="10">
 
 </div>
 
@@ -233,7 +245,11 @@ CardCMS 管理画面
 
 <label>
 
-<input type="checkbox" checked>
+<input
+	type="checkbox"
+	name="published"
+	value="1"
+	checked>
 
 公開する
 
@@ -243,11 +259,13 @@ CardCMS 管理画面
 
 <div class="button-area">
 
-<button class="save">💾 保存</button>
+<button type="submit" class="save">💾 保存</button>
 
-<button class="cancel">戻る</button>
+<button type="button" class="cancel">戻る</button>
 
 </div>
+
+</form>
 
 </div>
 
