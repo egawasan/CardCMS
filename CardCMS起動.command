@@ -1,10 +1,10 @@
-#!/bin/zsh
+#!/bin/bash
 
 cd ~/Desktop/CardCMS
 
-echo "========================================"
-echo " CardCMS Development Server"
-echo "========================================"
-echo ""
+php -S localhost:8000 &
+sleep 2
 
-php -S localhost:8000
+open http://localhost:8000/admin/card_list.php
+
+wait

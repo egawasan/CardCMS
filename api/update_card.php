@@ -1,0 +1,42 @@
+<?php
+
+$id = $_POST['id'];
+$title = $_POST['title'];
+$category = $_POST['category'];
+$body = $_POST['body'];
+$sort_order = $_POST['sort_order'];
+$published = isset($_POST['published']);
+
+// cards.json を読み込む
+$cards = json_decode(
+    file_get_contents("../database/cards.json"),
+    true
+);
+
+// カードを書き換える
+foreach ($cards as &$card) {
+
+    if ($card['id'] == $id) {
+
+        $card['title'] = $title;
+        $card['category'] = $category;
+        $card['body'] = $body;
+        $card['sort_order'] = (int)$sort_order;
+        $card['published'] = $published;
+
+        break;
+
+    }
+
+}
+
+file_put_contents(
+    "../database/cards.json",
+    json_encode($cards, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+);
+
+echo "<h1>更新しました！</h1>";
+
+echo '<p><a href="../admin/card_list.php">一覧へ戻る</a></p>';
+
+?>
