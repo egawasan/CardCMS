@@ -7,6 +7,22 @@ $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
 $published = isset($_POST['published']);
 
+// 現在の画像
+$image = $_POST['current_image'];
+
+// 新しい画像が選択された場合
+if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+
+    $filename = time() . "_" . basename($_FILES["image"]["name"]);
+
+    move_uploaded_file(
+        $_FILES["image"]["tmp_name"],
+        "../uploads/" . $filename
+    );
+
+    $image = $filename;
+}
+
 // cards.json を読み込む
 $cards = json_decode(
     file_get_contents("../database/cards.json"),
@@ -21,6 +37,7 @@ foreach ($cards as &$card) {
         $card['title'] = $title;
         $card['category'] = $category;
         $card['body'] = $body;
+        $card['image'] = $image;
         $card['sort_order'] = (int)$sort_order;
         $card['published'] = $published;
 

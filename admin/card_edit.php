@@ -249,25 +249,32 @@ CardCMS 管理画面
 
 <div class="row">
 
-<label>画像</label>
+<label>現在の画像</label><br>
 
-<div class="image-box">
+<?php if (!empty($editCard['image'])): ?>
 
-📷
+<img
+    src="../uploads/<?php echo htmlspecialchars($editCard['image']); ?>"
+    width="200">
 
-<br><br>
+<?php else: ?>
 
-ここへ画像をドラッグ＆ドロップ
+画像は登録されていません
 
-<br>
+<?php endif; ?>
 
-または
+</div>
 
-<br><br>
+<div class="row">
+
+<label>新しい画像</label><br>
 
 <input type="file" name="image">
 
-</div>
+<input
+    type="hidden"
+    name="current_image"
+    value="<?php echo htmlspecialchars($editCard['image']); ?>">
 
 </div>
 
