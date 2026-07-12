@@ -79,6 +79,15 @@ td{
     background:#2980b9;
 }
 
+.button.secondary{
+    background:#27ae60;
+    margin-left:10px;
+}
+
+.button.secondary:hover{
+    background:#1f8f4f;
+}
+
 </style>
 
 </head>
@@ -112,8 +121,6 @@ CardCMS 管理画面
 
     <td><?php echo $card['id']; ?></td>
 
-    <td><?php echo htmlspecialchars($card['title']); ?></td>
-
     <td>
 
 <?php if (!empty($card['image'])): ?>
@@ -129,6 +136,8 @@ CardCMS 管理画面
 <?php endif; ?>
 
 </td>
+
+    <td><?php echo htmlspecialchars($card['title']); ?></td>
 
     <td><?php echo htmlspecialchars($card['category']); ?></td>
 
@@ -153,6 +162,12 @@ CardCMS 管理画面
 <a href="card_new.php" class="button">
 
 ＋ 新しいカードを作成
+
+</a>
+
+<a href="../public/index.html" class="button secondary" target="_blank">
+
+公開ページを見る
 
 </a>
 
