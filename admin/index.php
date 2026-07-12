@@ -32,19 +32,35 @@
 			gap:15px;
 		}
 
-		.menu button{
+		.menu a,
+		.menu .disabled{
+			display:block;
 			font-size:18px;
 			padding:18px;
 			border:none;
 			border-radius:8px;
-			cursor:pointer;
 			background:#3498db;
 			color:white;
+			text-align:center;
+			text-decoration:none;
 			transition:.2s;
 		}
 
-		.menu button:hover{
+		.menu a:hover{
 			background:#2980b9;
+		}
+
+		.menu .public{
+			background:#27ae60;
+		}
+
+		.menu .public:hover{
+			background:#1f8f4f;
+		}
+
+		.menu .disabled{
+			background:#95a5a6;
+			cursor:not-allowed;
 		}
 
 		footer{
@@ -66,20 +82,22 @@
 
 	<div class="menu">
 
-		<button>📄 新しいカード</button>
+		<a href="card_new.php">📄 新しいカード</a>
 
-		<button>📋 カード一覧</button>
+		<a href="card_list.php">📋 カード一覧</a>
 
-		<button>🖼 画像管理</button>
+		<a href="../public/index.html" class="public" target="_blank">🌐 公開ページを見る</a>
 
-		<button>⚙️ システム設定</button>
+		<div class="disabled">🖼 画像管理（準備中）</div>
+
+		<div class="disabled">⚙️ システム設定（準備中）</div>
 
 	</div>
 
 </div>
 
 <footer>
-	CardCMS Version 0.1
+	CardCMS Version 0.10
 </footer>
 
 </body>
