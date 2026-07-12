@@ -99,6 +99,7 @@ CardCMS 管理画面
 
 <tr>
 <th>ID</th>
+<th>画像</th>
 <th>タイトル</th>
 <th>カテゴリー</th>
 <th>公開</th>
@@ -112,6 +113,22 @@ CardCMS 管理画面
     <td><?php echo $card['id']; ?></td>
 
     <td><?php echo htmlspecialchars($card['title']); ?></td>
+
+    <td>
+
+<?php if (!empty($card['image'])): ?>
+
+<img
+    src="../uploads/<?php echo htmlspecialchars($card['image']); ?>"
+    width="80">
+
+<?php else: ?>
+
+画像なし
+
+<?php endif; ?>
+
+</td>
 
     <td><?php echo htmlspecialchars($card['category']); ?></td>
 

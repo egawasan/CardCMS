@@ -7,12 +7,28 @@ $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
 $published = isset($_POST['published']);
 
+// 画像アップロード
+$image = "";
+
+if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+
+    $filename = time() . "_" . basename($_FILES["image"]["name"]);
+
+    move_uploaded_file(
+        $_FILES["image"]["tmp_name"],
+        "../uploads/" . $filename
+    );
+
+    $image = $filename;
+}
+
 //カード1枚分のデータを作る
 $card = [
     "id" => time(),
-    "title" =>$title,
+    "title" => $title,
     "category" => $category,
     "body" => $body,
+    "image" => $image,
     "sort_order" => (int)$sort_order,
     "published" => $published
 ];
