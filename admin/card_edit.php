@@ -272,9 +272,9 @@ CardCMS 管理画面
 <input type="file" name="image">
 
 <input
-    type="hidden"
-    name="current_image"
-    value="<?php echo htmlspecialchars($editCard['image']); ?>">
+	type="hidden"
+	name="current_image"
+	value="<?php echo htmlspecialchars($editCard['image'] ?? ''); ?>">
 
 </div>
 
