@@ -88,7 +88,7 @@
 
 		<a href="../public/index.html" class="public" target="_blank">🌐 公開ページを見る</a>
 
-		<div class="disabled">🖼 画像管理（準備中）</div>
+		<a href="image_manager.php">🖼 画像管理</a>
 
 		<div class="disabled">⚙️ システム設定（準備中）</div>
 
@@ -97,7 +97,7 @@
 </div>
 
 <footer>
-	CardCMS Version 0.10
+	CardCMS Version 0.12
 </footer>
 
 </body>
