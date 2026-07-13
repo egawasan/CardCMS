@@ -1,3 +1,25 @@
+<?php
+
+$cards = json_decode(file_get_contents("../database/cards.json"), true);
+
+if (!is_array($cards)) {
+	$cards = [];
+}
+
+$nextNumber = count($cards) + 1;
+
+foreach ($cards as $card) {
+	$cardNumber = $card['card_number'] ?? "";
+
+	if ($cardNumber !== "" && ctype_digit((string)$cardNumber)) {
+		$nextNumber = max($nextNumber, ((int)$cardNumber) + 1);
+	}
+}
+
+$nextCardNumber = str_pad((string)$nextNumber, 6, "0", STR_PAD_LEFT);
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -160,7 +182,7 @@ CardCMS 管理画面
 
 <div class="card-number">
 
-000001
+<?php echo htmlspecialchars($nextCardNumber, ENT_QUOTES, "UTF-8"); ?>
 
 </div>
 
@@ -271,7 +293,7 @@ CardCMS 管理画面
 
 <footer>
 
-CardCMS Version 1.0
+CardCMS Version 1.1
 
 </footer>
 

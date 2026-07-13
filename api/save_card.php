@@ -7,6 +7,26 @@ $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
 $published = isset($_POST['published']);
 
+// 現在のカード一覧を読み込む
+$cards = json_decode(file_get_contents("../database/cards.json"), true);
+
+// 配列でなければ空配列にする
+if (!is_array($cards)) {
+    $cards = [];
+}
+
+$nextNumber = count($cards) + 1;
+
+foreach ($cards as $existingCard) {
+    $cardNumber = $existingCard['card_number'] ?? "";
+
+    if ($cardNumber !== "" && ctype_digit((string)$cardNumber)) {
+        $nextNumber = max($nextNumber, ((int)$cardNumber) + 1);
+    }
+}
+
+$nextCardNumber = str_pad((string)$nextNumber, 6, "0", STR_PAD_LEFT);
+
 // 画像アップロード
 $image = "";
 
@@ -25,6 +45,7 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
 //カード1枚分のデータを作る
 $card = [
     "id" => time(),
+    "card_number" => $nextCardNumber,
     "title" => $title,
     "category" => $category,
     "body" => $body,
@@ -32,14 +53,6 @@ $card = [
     "sort_order" => (int)$sort_order,
     "published" => $published
 ];
-
-// 現在のカード一覧を読み込む
-$cards = json_decode(file_get_contents("../database/cards.json"), true);
-
-// 配列でなければ空配列にする
-if (!is_array($cards)) {
-    $cards = [];
-}
 
 // 新しいカードを追加
 $cards[] = $card;

@@ -11,6 +11,32 @@ if (!is_array($cards)) {
     $cards = [];
 }
 
+function h($value)
+{
+    return htmlspecialchars((string)$value, ENT_QUOTES, "UTF-8");
+}
+
+function cardNumberSortValue($card)
+{
+    $cardNumber = $card['card_number'] ?? "";
+
+    if ($cardNumber !== "" && ctype_digit((string)$cardNumber)) {
+        return (int)$cardNumber;
+    }
+
+    return PHP_INT_MAX;
+}
+
+usort($cards, function ($a, $b) {
+    $numberCompare = cardNumberSortValue($a) <=> cardNumberSortValue($b);
+
+    if ($numberCompare !== 0) {
+        return $numberCompare;
+    }
+
+    return ((int)($a['id'] ?? 0)) <=> ((int)($b['id'] ?? 0));
+});
+
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +133,7 @@ CardCMS 管理画面
 <table>
 
 <tr>
-<th>ID</th>
+<th>カード番号</th>
 <th>画像</th>
 <th>タイトル</th>
 <th>カテゴリー</th>
@@ -119,14 +145,14 @@ CardCMS 管理画面
 
 <tr>
 
-    <td><?php echo $card['id']; ?></td>
+    <td><?php echo h($card['card_number'] ?? ""); ?></td>
 
     <td>
 
 <?php if (!empty($card['image'])): ?>
 
 <img
-    src="../uploads/<?php echo htmlspecialchars($card['image']); ?>"
+    src="../uploads/<?php echo h($card['image']); ?>"
     width="80">
 
 <?php else: ?>
@@ -137,20 +163,20 @@ CardCMS 管理画面
 
 </td>
 
-    <td><?php echo htmlspecialchars($card['title']); ?></td>
+    <td><?php echo h($card['title'] ?? ""); ?></td>
 
-    <td><?php echo htmlspecialchars($card['category']); ?></td>
+    <td><?php echo h($card['category'] ?? ""); ?></td>
 
     <td>
         <?php
-        echo $card['published'] ? "○" : "×";
+        echo !empty($card['published']) ? "○" : "×";
         ?>
     </td>
 
     <td>
-    <a href="card_edit.php?id=<?php echo $card['id']; ?>">✏ 編集</a>
+    <a href="card_edit.php?id=<?php echo h($card['id'] ?? ""); ?>">✏ 編集</a>
     |
-    <a href="delete_card.php?id=<?php echo $card['id']; ?>">🗑 削除</a>
+    <a href="delete_card.php?id=<?php echo h($card['id'] ?? ""); ?>">🗑 削除</a>
 </td>
 
 </tr>

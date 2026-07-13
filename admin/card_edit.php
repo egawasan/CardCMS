@@ -1,12 +1,21 @@
 <?php
 
-$id = $_GET['id'];
+$id = $_GET['id'] ?? "";
+
+function h($value)
+{
+    return htmlspecialchars((string)$value, ENT_QUOTES, "UTF-8");
+}
 
 // cards.json を読み込む
 $cards = json_decode(
     file_get_contents("../database/cards.json"),
     true
 );
+
+if (!is_array($cards)) {
+    $cards = [];
+}
 
 // 編集するカードを探す
 $editCard = null;
@@ -25,6 +34,8 @@ if ($editCard === null) {
     die("カードが見つかりません。");
 }
 
+$cardNumber = $editCard['card_number'] ?? "";
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +44,7 @@ if ($editCard === null) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CardCMS - 新しいカード</title>
+<title>CardCMS - カード編集</title>
 
 <style>
 
@@ -181,12 +192,12 @@ CardCMS 管理画面
       method="post"
       enctype="multipart/form-data">
 
-	<input
+    <input
     type="hidden"
     name="id"
-    value="<?php echo $editCard['id']; ?>">
+    value="<?php echo h($editCard['id'] ?? ""); ?>">
 
-<h2>📄 新しいカード</h2>
+<h2>📄 カード編集</h2>
 
 <div class="row">
 
@@ -194,7 +205,7 @@ CardCMS 管理画面
 
 <div class="card-number">
 
-000001
+<?php echo h($cardNumber); ?>
 
 </div>
 
@@ -207,7 +218,7 @@ CardCMS 管理画面
 <input
     type="text"
     name="title"
-    value="<?php echo htmlspecialchars($editCard['title']); ?>"
+    value="<?php echo h($editCard['title'] ?? ""); ?>"
     required>
 
 </div>
@@ -218,19 +229,19 @@ CardCMS 管理画面
 
 <select name="category">
 
-<option value="お知らせ" <?php if($editCard['category']=="お知らせ") echo "selected"; ?>>
+<option value="お知らせ" <?php if(($editCard['category'] ?? "")=="お知らせ") echo "selected"; ?>>
     お知らせ
 </option>
 
-<option value="施工事例" <?php if($editCard['category']=="施工事例") echo "selected"; ?>>
+<option value="施工事例" <?php if(($editCard['category'] ?? "")=="施工事例") echo "selected"; ?>>
     施工事例
 </option>
 
-<option value="商品紹介" <?php if($editCard['category']=="商品紹介") echo "selected"; ?>>
+<option value="商品紹介" <?php if(($editCard['category'] ?? "")=="商品紹介") echo "selected"; ?>>
     商品紹介
 </option>
 
-<option value="その他" <?php if($editCard['category']=="その他") echo "selected"; ?>>
+<option value="その他" <?php if(($editCard['category'] ?? "")=="その他") echo "selected"; ?>>
     その他
 </option>
 
@@ -243,7 +254,7 @@ CardCMS 管理画面
 <label>本文</label>
 
 <textarea
-    name="body"><?php echo htmlspecialchars($editCard['body']); ?></textarea>
+    name="body"><?php echo h($editCard['body'] ?? ""); ?></textarea>
 
 </div>
 
@@ -254,7 +265,7 @@ CardCMS 管理画面
 <?php if (!empty($editCard['image'])): ?>
 
 <img
-    src="../uploads/<?php echo htmlspecialchars($editCard['image']); ?>"
+    src="../uploads/<?php echo h($editCard['image']); ?>"
     width="200">
 
 <?php else: ?>
@@ -274,7 +285,7 @@ CardCMS 管理画面
 <input
 	type="hidden"
 	name="current_image"
-	value="<?php echo htmlspecialchars($editCard['image'] ?? ''); ?>">
+	value="<?php echo h($editCard['image'] ?? ""); ?>">
 
 </div>
 
@@ -285,7 +296,7 @@ CardCMS 管理画面
 <input
     type="number"
     name="sort_order"
-    value="<?php echo $editCard['sort_order']; ?>">
+    value="<?php echo h($editCard['sort_order'] ?? 10); ?>">
 
 </div>
 
@@ -297,7 +308,7 @@ CardCMS 管理画面
 	type="checkbox"
 	name="published"
 	value="1"
-	checked>
+	<?php if (!empty($editCard['published'])) echo "checked"; ?>>
 
 公開する
 
@@ -319,7 +330,7 @@ CardCMS 管理画面
 
 <footer>
 
-CardCMS Version 1.0
+CardCMS Version 1.1
 
 </footer>
 

@@ -1,6 +1,7 @@
 [
     {
         "id": 1783491523,
+        "card_number": "000001",
         "title": "CardCMS第一号（修正版）",
         "category": "お知らせ",
         "body": "初めて保存できました。",
@@ -10,6 +11,7 @@
     },
     {
         "id": 1783814246,
+        "card_number": "000002",
         "title": "写真1",
         "category": "お知らせ",
         "body": "",
@@ -19,6 +21,7 @@
     },
     {
         "id": 1783814917,
+        "card_number": "000003",
         "title": "photo2",
         "category": "お知らせ",
         "body": "",
