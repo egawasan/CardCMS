@@ -319,7 +319,7 @@ CardCMS 管理画面
 
 <footer>
 
-CardCMS Version 0.13
+CardCMS Version 1.0
 
 </footer>
 

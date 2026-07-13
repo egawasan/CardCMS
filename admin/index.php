@@ -90,14 +90,14 @@
 
 		<a href="image_manager.php">🖼 画像管理</a>
 
-		<div class="disabled">⚙️ システム設定（準備中）</div>
+		<a href="settings.php">⚙️ システム情報</a>
 
 	</div>
 
 </div>
 
 <footer>
-	CardCMS Version 0.12
+	CardCMS Version 1.0
 </footer>
 
 </body>
