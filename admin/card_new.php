@@ -261,7 +261,7 @@ CardCMS 管理画面
 
 <button type="submit" class="save">💾 保存</button>
 
-<button type="button" class="cancel">戻る</button>
+<button type="button" class="cancel" onclick="location.href='card_list.php'">戻る</button>
 
 </div>
 
@@ -271,7 +271,7 @@ CardCMS 管理画面
 
 <footer>
 
-CardCMS Version 0.1
+CardCMS Version 0.13
 
 </footer>
 
