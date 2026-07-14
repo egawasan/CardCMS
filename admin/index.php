@@ -97,7 +97,7 @@
 </div>
 
 <footer>
-	CardCMS Version 1.2
+	CardCMS Version 1.3
 </footer>
 
 </body>

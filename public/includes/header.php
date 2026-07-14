@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CardCMS 公開ページ</title>
+<title>有限会社市場工芸</title>
 <style>
 *{
     box-sizing:border-box;
@@ -16,28 +16,64 @@ body{
     color:#25313d;
 }
 
-header{
-    background:#243241;
-    color:white;
-    padding:24px 18px;
+.site-header{
+    background:white;
+    border-bottom:1px solid #d9e0e7;
+    padding:18px;
 }
 
 .header-inner{
     width:92%;
     max-width:1080px;
     margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.site-title{
-    margin:0;
-    font-size:28px;
+.site-logo{
+    display:block;
+    width:min(310px, 80vw);
+    height:auto;
+}
+
+.hero{
+    background:white;
+}
+
+.hero-image{
+    width:100%;
+    max-height:620px;
+    object-fit:cover;
+    display:block;
+}
+
+.hero-message{
+    background:#243241;
+    color:white;
+    padding:28px 18px;
+    text-align:center;
+}
+
+.hero-message-inner{
+    width:92%;
+    max-width:760px;
+    margin:0 auto;
+}
+
+.hero-message p{
+    margin:0 0 12px;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.hero-message p:last-child{
+    margin-bottom:0;
+}
+
+.highlight{
+    color:#fff45a;
     font-weight:bold;
-}
-
-.site-subtitle{
-    margin:8px 0 0;
-    color:#d8e1ea;
-    font-size:15px;
 }
 
 main{
@@ -144,8 +180,8 @@ footer{
 }
 
 @media (max-width:640px){
-    .site-title{
-        font-size:24px;
+    .hero-message p{
+        font-size:16px;
     }
 
     .toolbar{
@@ -158,9 +194,11 @@ footer{
 
 <body>
 
-<header>
+<header class="site-header">
     <div class="header-inner">
-        <h1 class="site-title">CardCMS</h1>
-        <p class="site-subtitle">公開中のカードを表示しています。</p>
+        <img
+            class="site-logo"
+            src="https://www.ichiba-k.jp/2020/wp-content/uploads/2020/12/9b7d91cff75d2687ea6b30e403f540c9.png"
+            alt="有限会社市場工芸">
     </div>
 </header>

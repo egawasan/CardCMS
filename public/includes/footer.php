@@ -1,4 +1,4 @@
-<footer>CardCMS Version 1.2</footer>
+<footer>CardCMS Version 1.3</footer>
 
 <script>
 const cardGrid = document.getElementById('card-grid');

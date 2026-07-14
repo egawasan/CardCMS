@@ -4,7 +4,7 @@ CardCMS は、カード型の情報を登録・編集・公開するための小
 
 ## 現在のバージョン
 
-CardCMS Version 1.2
+CardCMS Version 1.3
 
 ## 起動方法
 
@@ -48,6 +48,6 @@ http://localhost:8000/admin/index.php
 
 ## 現在の区切り
 
-Version 1.2 では、公開ページをPHP化し、header.php と footer.php に分けて管理できる形に整えています。
+Version 1.3 では、WordPressトップページ移植の第一段階として、ロゴ・メイン画像・トップ紹介文を公開ページに表示しています。
 
 今後は、ログイン機能、公開ページのデザイン強化、画像削除、検索・カテゴリ絞り込みなどを追加できます。

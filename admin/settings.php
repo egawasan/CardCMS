@@ -124,7 +124,7 @@ footer{
 <table>
     <tr>
         <th>バージョン</th>
-        <td>CardCMS Version 1.2</td>
+        <td>CardCMS Version 1.3</td>
     </tr>
     <tr>
         <th>PHPバージョン</th>
@@ -154,7 +154,7 @@ footer{
 
 </div>
 
-<footer>CardCMS Version 1.2</footer>
+<footer>CardCMS Version 1.3</footer>
 
 </body>
 </html>
