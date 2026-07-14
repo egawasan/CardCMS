@@ -55,12 +55,25 @@ function createCard(card){
         body.appendChild(createTextElement('p', 'card-text', card.body));
     }
 
-    if (card.image || layout !== 'Text') {
-        article.appendChild(imageBox);
-    }
+    const showImage = card.image || layout !== 'Text';
+    const showBody = layout !== 'Hero' || card.body;
 
-    if (layout !== 'Hero' || card.body) {
-        article.appendChild(body);
+    if (layout === 'Hero') {
+        if (showImage) {
+            article.appendChild(imageBox);
+        }
+
+        if (showBody) {
+            article.appendChild(body);
+        }
+    } else {
+        if (showBody) {
+            article.appendChild(body);
+        }
+
+        if (showImage) {
+            article.appendChild(imageBox);
+        }
     }
 
     return article;
