@@ -1,7 +1,7 @@
 <nav class="fixed-menu" aria-label="固定メニュー">
     <ul>
-        <li><a href="#honsha" class="factory">本社・工場</a></li>
-        <li><a href="#mail" class="mail">メール</a></li>
+        <li><a href="#head-office-factory" class="factory">本社・工場</a></li>
+        <li><a href="#contact" class="mail">メール</a></li>
         <li><a href="tel:073-477-5000" class="tel">電話</a></li>
     </ul>
 </nav>
@@ -33,6 +33,10 @@ function createCard(card){
     const layout = card.layout || 'Default';
     article.classList.add('layout-' + layout.toLowerCase());
 
+    if (card.slug) {
+        article.id = card.slug;
+    }
+
     const imageBox = document.createElement('div');
     imageBox.className = 'card-image';
 
@@ -55,7 +59,7 @@ function createCard(card){
         body.appendChild(createTextElement('p', 'card-text', card.body));
     }
 
-    const showImage = card.image || layout !== 'Text';
+    const showImage = Boolean(card.image);
     const showBody = layout !== 'Hero' || card.body;
 
     if (layout === 'Hero') {

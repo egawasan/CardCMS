@@ -159,7 +159,15 @@ main{
     border-left:4px solid #2d9fd8;
 }
 
+.card.layout-contact{
+    border-left:4px solid #2f855a;
+}
+
 .card.layout-text .card-body{
+    padding:20px;
+}
+
+.card.layout-contact .card-body{
     padding:20px;
 }
 
