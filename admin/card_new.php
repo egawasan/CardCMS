@@ -293,7 +293,7 @@ CardCMS 管理画面
 
 <footer>
 
-CardCMS Version 1.1
+CardCMS Version 1.2
 
 </footer>
 

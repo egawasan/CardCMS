@@ -86,7 +86,7 @@
 
 		<a href="card_list.php">📋 カード一覧</a>
 
-		<a href="../public/index.html" class="public" target="_blank">🌐 公開ページを見る</a>
+		<a href="../public/index.php" class="public" target="_blank">🌐 公開ページを見る</a>
 
 		<a href="image_manager.php">🖼 画像管理</a>
 
@@ -97,7 +97,7 @@
 </div>
 
 <footer>
-	CardCMS Version 1.1
+	CardCMS Version 1.2
 </footer>
 
 </body>

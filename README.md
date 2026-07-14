@@ -4,7 +4,7 @@ CardCMS は、カード型の情報を登録・編集・公開するための小
 
 ## 現在のバージョン
 
-CardCMS Version 1.1
+CardCMS Version 1.2
 
 ## 起動方法
 
@@ -34,7 +34,7 @@ http://localhost:8000/admin/index.php
 - カード一覧: `admin/card_list.php`
 - 画像管理: `admin/image_manager.php`
 - システム情報: `admin/settings.php`
-- 公開ページ: `public/index.html`
+- 公開ページ: `public/index.php`
 
 ## データ保存場所
 
@@ -48,6 +48,6 @@ http://localhost:8000/admin/index.php
 
 ## 現在の区切り
 
-Version 1.1 では、内部IDとは別に画面表示用のカード番号を使えるように整えています。
+Version 1.2 では、公開ページをPHP化し、header.php と footer.php に分けて管理できる形に整えています。
 
 今後は、ログイン機能、公開ページのデザイン強化、画像削除、検索・カテゴリ絞り込みなどを追加できます。

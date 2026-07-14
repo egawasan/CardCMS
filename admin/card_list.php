@@ -191,7 +191,7 @@ CardCMS 管理画面
 
 </a>
 
-<a href="../public/index.html" class="button secondary" target="_blank">
+<a href="../public/index.php" class="button secondary" target="_blank">
 
 公開ページを見る
 

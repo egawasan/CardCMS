@@ -4,6 +4,22 @@
 
 ---
 
+## Version 1.2（2026-07-14）
+
+### 改善
+- 公開ページを `public/index.html` から `public/index.php` へ変更
+- `public/includes/header.php` を追加
+- `public/includes/footer.php` を追加
+- 公開ページのヘッダー、本文、フッターを分けて管理できる形に整理
+- 管理画面とカード一覧の「公開ページを見る」リンクを `index.php` へ変更
+- `docs/PROJECT_STATUS.md` と `docs/CardCMS作業日誌.md` を追加
+
+### 完了
+- 公開ページのPHP化と共通レイアウト化を開始できる状態になった
+- ブラウザで `public/index.php` の表示を確認した
+
+---
+
 ## Version 1.1（2026-07-13）
 
 ### 改善
