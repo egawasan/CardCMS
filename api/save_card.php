@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("Asia/Tokyo");
+
 // フォームから送られてきたデータを変数に入れる
 $title = $_POST['title'];
 $card_type = $_POST['card_type'] ?? 'お知らせ';
@@ -29,6 +31,7 @@ foreach ($cards as $existingCard) {
 }
 
 $nextCardNumber = str_pad((string)$nextNumber, 6, "0", STR_PAD_LEFT);
+$now = date("Y-m-d H:i:s");
 
 // 画像アップロード
 $image = "";
@@ -57,7 +60,9 @@ $card = [
     "body" => $body,
     "image" => $image,
     "sort_order" => (int)$sort_order,
-    "published" => $published
+    "published" => $published,
+    "created_at" => $now,
+    "updated_at" => $now
 ];
 
 // 新しいカードを追加

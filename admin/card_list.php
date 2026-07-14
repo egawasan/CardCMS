@@ -140,6 +140,7 @@ CardCMS 管理画面
 <th>画像</th>
 <th>タイトル</th>
 <th>カテゴリー</th>
+<th>更新日時</th>
 <th>公開</th>
 <th>操作</th>
 </tr>
@@ -175,6 +176,8 @@ CardCMS 管理画面
     <td><?php echo h($card['title'] ?? ""); ?></td>
 
     <td><?php echo h($card['category'] ?? ""); ?></td>
+
+    <td><?php echo h($card['updated_at'] ?? ""); ?></td>
 
     <td>
         <?php

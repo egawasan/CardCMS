@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("Asia/Tokyo");
+
 $id = $_POST['id'];
 $title = $_POST['title'];
 $card_type = $_POST['card_type'] ?? 'お知らせ';
@@ -9,6 +11,7 @@ $category = $_POST['category'];
 $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
 $published = isset($_POST['published']);
+$now = date("Y-m-d H:i:s");
 
 // 現在の画像
 $image = $_POST['current_image'];
@@ -46,6 +49,12 @@ foreach ($cards as &$card) {
         $card['image'] = $image;
         $card['sort_order'] = (int)$sort_order;
         $card['published'] = $published;
+
+        if (empty($card['created_at'])) {
+            $card['created_at'] = $now;
+        }
+
+        $card['updated_at'] = $now;
 
         break;
 

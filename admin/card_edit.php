@@ -38,6 +38,8 @@ $cardNumber = $editCard['card_number'] ?? "";
 $cardType = $editCard['card_type'] ?? "お知らせ";
 $layout = $editCard['layout'] ?? "Text";
 $slug = $editCard['slug'] ?? "";
+$createdAt = $editCard['created_at'] ?? "未記録";
+$updatedAt = $editCard['updated_at'] ?? "未記録";
 
 $cardTypeOptions = ["トップページ", "お知らせ", "サービス", "会社情報", "お問い合わせ", "採用"];
 $layoutOptions = ["Hero", "Text", "ImageLeft", "ImageRight", "Gallery", "Contact"];
@@ -173,6 +175,14 @@ button{
 
 }
 
+.info-text{
+	padding:12px;
+	border:1px solid #ddd;
+	border-radius:6px;
+	background:#f6f8fb;
+	color:#555;
+}
+
 footer{
 
 	text-align:center;
@@ -262,6 +272,30 @@ CardCMS 管理画面
     name="slug"
     value="<?php echo h($slug); ?>"
     placeholder="例: main-visual">
+
+</div>
+
+<div class="row">
+
+<label>作成日時</label>
+
+<div class="info-text">
+
+<?php echo h($createdAt); ?>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<label>更新日時</label>
+
+<div class="info-text">
+
+<?php echo h($updatedAt); ?>
+
+</div>
 
 </div>
 
