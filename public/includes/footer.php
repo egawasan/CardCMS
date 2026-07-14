@@ -91,7 +91,9 @@ fetch('../database/cards.json')
                 })
             : [];
 
-        cardCount.textContent = publishedCards.length + '件表示';
+        if (cardCount) {
+            cardCount.textContent = publishedCards.length + '件表示';
+        }
 
         if (publishedCards.length === 0) {
             showEmptyMessage();
@@ -103,7 +105,9 @@ fetch('../database/cards.json')
         });
     })
     .catch(() => {
-        cardCount.textContent = '読み込みエラー';
+        if (cardCount) {
+            cardCount.textContent = '読み込みエラー';
+        }
         showEmptyMessage();
     });
 </script>
