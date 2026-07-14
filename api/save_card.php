@@ -2,6 +2,8 @@
 
 // フォームから送られてきたデータを変数に入れる
 $title = $_POST['title'];
+$card_type = $_POST['card_type'] ?? 'お知らせ';
+$layout = $_POST['layout'] ?? 'Text';
 $category = $_POST['category'];
 $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
@@ -46,6 +48,8 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
 $card = [
     "id" => time(),
     "card_number" => $nextCardNumber,
+    "card_type" => $card_type,
+    "layout" => $layout,
     "title" => $title,
     "category" => $category,
     "body" => $body,

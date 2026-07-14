@@ -35,6 +35,11 @@ if ($editCard === null) {
 }
 
 $cardNumber = $editCard['card_number'] ?? "";
+$cardType = $editCard['card_type'] ?? "お知らせ";
+$layout = $editCard['layout'] ?? "Text";
+
+$cardTypeOptions = ["トップページ", "お知らせ", "サービス", "会社情報", "お問い合わせ", "採用"];
+$layoutOptions = ["Hero", "Text", "ImageLeft", "ImageRight", "Gallery", "Contact"];
 
 ?>
 
@@ -208,6 +213,42 @@ CardCMS 管理画面
 <?php echo h($cardNumber); ?>
 
 </div>
+
+</div>
+
+<div class="row">
+
+<label>カード種別</label>
+
+<select name="card_type">
+
+<?php foreach ($cardTypeOptions as $option): ?>
+
+<option value="<?php echo h($option); ?>" <?php if ($cardType === $option) echo "selected"; ?>>
+    <?php echo h($option); ?>
+</option>
+
+<?php endforeach; ?>
+
+</select>
+
+</div>
+
+<div class="row">
+
+<label>レイアウト</label>
+
+<select name="layout">
+
+<?php foreach ($layoutOptions as $option): ?>
+
+<option value="<?php echo h($option); ?>" <?php if ($layout === $option) echo "selected"; ?>>
+    <?php echo h($option); ?>
+</option>
+
+<?php endforeach; ?>
+
+</select>
 
 </div>
 

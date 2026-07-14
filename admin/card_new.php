@@ -190,6 +190,50 @@ CardCMS 管理画面
 
 <div class="row">
 
+<label>カード種別</label>
+
+<select name="card_type">
+
+<option>トップページ</option>
+
+<option>お知らせ</option>
+
+<option>サービス</option>
+
+<option>会社情報</option>
+
+<option>お問い合わせ</option>
+
+<option>採用</option>
+
+</select>
+
+</div>
+
+<div class="row">
+
+<label>レイアウト</label>
+
+<select name="layout">
+
+<option>Hero</option>
+
+<option>Text</option>
+
+<option>ImageLeft</option>
+
+<option>ImageRight</option>
+
+<option>Gallery</option>
+
+<option>Contact</option>
+
+</select>
+
+</div>
+
+<div class="row">
+
 <label>タイトル</label>
 
 <input

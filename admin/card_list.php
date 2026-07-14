@@ -134,6 +134,8 @@ CardCMS 管理画面
 
 <tr>
 <th>カード番号</th>
+<th>種別</th>
+<th>レイアウト</th>
 <th>画像</th>
 <th>タイトル</th>
 <th>カテゴリー</th>
@@ -146,6 +148,10 @@ CardCMS 管理画面
 <tr>
 
     <td><?php echo h($card['card_number'] ?? ""); ?></td>
+
+    <td><?php echo h($card['card_type'] ?? ""); ?></td>
+
+    <td><?php echo h($card['layout'] ?? ""); ?></td>
 
     <td>
 
