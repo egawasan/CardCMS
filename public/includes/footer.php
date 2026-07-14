@@ -22,6 +22,8 @@ function createTextElement(tagName, className, text){
 function createCard(card){
     const article = document.createElement('article');
     article.className = 'card';
+    const layout = card.layout || 'Default';
+    article.classList.add('layout-' + layout.toLowerCase());
 
     const imageBox = document.createElement('div');
     imageBox.className = 'card-image';
@@ -45,7 +47,10 @@ function createCard(card){
         body.appendChild(createTextElement('p', 'card-text', card.body));
     }
 
-    article.appendChild(imageBox);
+    if (card.image || layout !== 'Text') {
+        article.appendChild(imageBox);
+    }
+
     article.appendChild(body);
 
     return article;
