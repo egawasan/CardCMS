@@ -9,6 +9,10 @@
     box-sizing:border-box;
 }
 
+:root{
+    --page-max-width:1200px;
+}
+
 body{
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
@@ -25,7 +29,7 @@ body{
 
 .header-inner{
     width:92%;
-    max-width:1080px;
+    max-width:var(--page-max-width);
     margin:0 auto;
     display:flex;
     align-items:center;
@@ -40,6 +44,9 @@ body{
 
 .hero{
     background:white;
+    width:92%;
+    max-width:var(--page-max-width);
+    margin:0 auto;
 }
 
 .hero-image{
@@ -79,7 +86,7 @@ body{
 
 main{
     width:92%;
-    max-width:1080px;
+    max-width:var(--page-max-width);
     margin:28px auto 48px;
 }
 
@@ -173,7 +180,7 @@ main{
 
 .info-section{
     width:92%;
-    max-width:1080px;
+    max-width:var(--page-max-width);
     margin:0 auto 28px;
     background:white;
     border:1px solid #d9e0e7;
@@ -226,7 +233,7 @@ main{
     padding:0;
     display:flex;
     width:100%;
-    max-width:1080px;
+    max-width:var(--page-max-width);
 }
 
 .fixed-menu li{
@@ -257,7 +264,7 @@ main{
 
 footer{
     width:92%;
-    max-width:1080px;
+    max-width:var(--page-max-width);
     margin:0 auto 32px;
     color:#8894a0;
     font-size:13px;
