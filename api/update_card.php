@@ -4,6 +4,7 @@ $id = $_POST['id'];
 $title = $_POST['title'];
 $card_type = $_POST['card_type'] ?? 'お知らせ';
 $layout = $_POST['layout'] ?? 'Text';
+$slug = trim($_POST['slug'] ?? '');
 $category = $_POST['category'];
 $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
@@ -38,6 +39,7 @@ foreach ($cards as &$card) {
 
         $card['card_type'] = $card_type;
         $card['layout'] = $layout;
+        $card['slug'] = $slug;
         $card['title'] = $title;
         $card['category'] = $category;
         $card['body'] = $body;

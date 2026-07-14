@@ -4,6 +4,7 @@
 $title = $_POST['title'];
 $card_type = $_POST['card_type'] ?? 'お知らせ';
 $layout = $_POST['layout'] ?? 'Text';
+$slug = trim($_POST['slug'] ?? '');
 $category = $_POST['category'];
 $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
@@ -50,6 +51,7 @@ $card = [
     "card_number" => $nextCardNumber,
     "card_type" => $card_type,
     "layout" => $layout,
+    "slug" => $slug,
     "title" => $title,
     "category" => $category,
     "body" => $body,

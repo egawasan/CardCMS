@@ -37,6 +37,7 @@ if ($editCard === null) {
 $cardNumber = $editCard['card_number'] ?? "";
 $cardType = $editCard['card_type'] ?? "お知らせ";
 $layout = $editCard['layout'] ?? "Text";
+$slug = $editCard['slug'] ?? "";
 
 $cardTypeOptions = ["トップページ", "お知らせ", "サービス", "会社情報", "お問い合わせ", "採用"];
 $layoutOptions = ["Hero", "Text", "ImageLeft", "ImageRight", "Gallery", "Contact"];
@@ -249,6 +250,18 @@ CardCMS 管理画面
 <?php endforeach; ?>
 
 </select>
+
+</div>
+
+<div class="row">
+
+<label>管理名（slug）</label>
+
+<input
+    type="text"
+    name="slug"
+    value="<?php echo h($slug); ?>"
+    placeholder="例: main-visual">
 
 </div>
 

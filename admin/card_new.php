@@ -234,6 +234,17 @@ CardCMS 管理画面
 
 <div class="row">
 
+<label>管理名（slug）</label>
+
+<input
+	type="text"
+	name="slug"
+	placeholder="例: main-visual">
+
+</div>
+
+<div class="row">
+
 <label>タイトル</label>
 
 <input
