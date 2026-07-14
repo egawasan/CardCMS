@@ -59,7 +59,9 @@ function createCard(card){
         article.appendChild(imageBox);
     }
 
-    article.appendChild(body);
+    if (layout !== 'Hero' || card.body) {
+        article.appendChild(body);
+    }
 
     return article;
 }
