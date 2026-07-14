@@ -42,6 +42,9 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 ・公開ページに ImageLeft、ImageRight、Gallery、Text の基本表示スタイルを追加
 ・docs/006_トップページカード設計表.md を作成
 ・トップページ主要ブロックをカード単位で整理
+・固定HTMLだったメイン画像を main-visual のHeroカードへ移行
+・top-intro カードを正式な紹介文カードとして更新
+・house-cleaning カードを追加
 
 【成果】
 
@@ -58,12 +61,13 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 ・既存カードデータの形式がそろい、次のレイアウト表示調整に進みやすくなった
 ・レイアウトごとにカードの見た目を変える第一段階ができた
 ・WordPressトップページの主要ブロックをCardCMSのカードとして整理できた
+・トップページの先頭3ブロックをカードとして扱う形にできた
 
 【次回予定】
 
-・トップページ用カードを1枚ずつ実データとして登録する
-・各カードに使う代表画像を決める
-・公開ページ側で Hero と Contact の表示方針を決める
+・house-cleaning カードの本文と代表画像を整理する
+・infection-control カードを追加する
+・Contact の表示方針を決める
 
 ---
 

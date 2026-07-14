@@ -42,48 +42,6 @@ body{
     height:auto;
 }
 
-.hero{
-    background:white;
-    width:92%;
-    max-width:var(--page-max-width);
-    margin:0 auto;
-}
-
-.hero-image{
-    width:100%;
-    max-height:620px;
-    object-fit:cover;
-    display:block;
-}
-
-.hero-message{
-    background:#243241;
-    color:white;
-    padding:28px 18px;
-    text-align:center;
-}
-
-.hero-message-inner{
-    width:92%;
-    max-width:760px;
-    margin:0 auto;
-}
-
-.hero-message p{
-    margin:0 0 12px;
-    line-height:1.9;
-    font-size:18px;
-}
-
-.hero-message p:last-child{
-    margin-bottom:0;
-}
-
-.highlight{
-    color:#fff45a;
-    font-weight:bold;
-}
-
 main{
     width:92%;
     max-width:var(--page-max-width);
@@ -120,6 +78,37 @@ main{
     border-radius:8px;
     overflow:hidden;
     box-shadow:0 4px 12px rgba(31,45,61,.08);
+}
+
+.card.layout-hero{
+    grid-column:1 / -1;
+    border:none;
+    box-shadow:none;
+}
+
+.card.layout-hero .card-image{
+    aspect-ratio:16 / 9;
+    max-height:620px;
+}
+
+.card.layout-hero .card-body{
+    background:#243241;
+    color:white;
+    padding:28px 18px;
+    text-align:center;
+}
+
+.card.layout-hero .category,
+.card.layout-hero .card-title{
+    display:none;
+}
+
+.card.layout-hero .card-text{
+    max-width:760px;
+    margin:0 auto;
+    color:white;
+    font-size:18px;
+    line-height:1.9;
 }
 
 .card.layout-imageleft,
@@ -322,7 +311,7 @@ footer{
 }
 
 @media (max-width:640px){
-    .hero-message p{
+    .card.layout-hero .card-text{
         font-size:16px;
     }
 

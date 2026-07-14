@@ -19,6 +19,14 @@ function createTextElement(tagName, className, text){
     return element;
 }
 
+function getImageSrc(imagePath){
+    if (/^https?:\/\//.test(imagePath)) {
+        return imagePath;
+    }
+
+    return '../uploads/' + encodeURIComponent(imagePath);
+}
+
 function createCard(card){
     const article = document.createElement('article');
     article.className = 'card';
@@ -30,7 +38,7 @@ function createCard(card){
 
     if (card.image) {
         const image = document.createElement('img');
-        image.src = '../uploads/' + encodeURIComponent(card.image);
+        image.src = getImageSrc(card.image);
         image.alt = card.title || 'カード画像';
         imageBox.appendChild(image);
     } else {

@@ -8,8 +8,8 @@
         "title": "CardCMS第一号（修正版）",
         "category": "お知らせ",
         "body": "初めて保存できました。",
-        "sort_order": 10,
-        "published": true,
+        "sort_order": 900,
+        "published": false,
         "image": "1783909800_1783814917_xlh343_01_l.jpg",
         "created_at": "2026-07-08 15:18:43",
         "updated_at": "2026-07-08 15:18:43"
@@ -24,10 +24,25 @@
         "category": "お知らせ",
         "body": "",
         "image": "1783818225_IMG_2835.jpg",
-        "sort_order": 20,
-        "published": true,
+        "sort_order": 910,
+        "published": false,
         "created_at": "2026-07-12 09:08:37",
         "updated_at": "2026-07-12 09:08:37"
+    },
+    {
+        "id": 1784016316,
+        "card_number": "000005",
+        "card_type": "トップページ",
+        "layout": "Hero",
+        "slug": "main-visual",
+        "title": "メイン画像",
+        "category": "トップページ",
+        "body": "市場工芸は\n看板のデザイン・製作、施工・点検・アフターメンテ\nさらに建築関係まで\n\nさまざまなニーズに対応致します。\nまずはお気軽にお問い合わせ下さい。",
+        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/01/S__211738626_0-1200x900.jpg",
+        "sort_order": 10,
+        "published": true,
+        "created_at": "2026-07-14 17:05:17",
+        "updated_at": "2026-07-14 17:05:17"
     },
     {
         "id": 1784006725,
@@ -36,12 +51,27 @@
         "layout": "Text",
         "slug": "top-intro",
         "title": "紹介文",
-        "category": "お知らせ",
-        "body": "紹介文の本文を記入する場所です。",
+        "category": "トップページ",
+        "body": "有限会社市場工芸は、看板のデザイン・製作、施工、点検、アフターメンテナンスまで幅広く対応しています。お客様の目的や現場に合わせて、必要な内容を一つずつ形にしていきます。",
+        "image": "",
+        "sort_order": 20,
+        "published": true,
+        "created_at": "2026-07-14 14:25:25",
+        "updated_at": "2026-07-14 17:05:17"
+    },
+    {
+        "id": 1784016317,
+        "card_number": "000006",
+        "card_type": "サービス",
+        "layout": "ImageLeft",
+        "slug": "house-cleaning",
+        "title": "ハウスクリーニング事業部はじめました！！",
+        "category": "サービス",
+        "body": "ハウスクリーニング事業部の案内カードです。本文と代表画像は、現状サイトの内容を確認しながら整えていきます。",
         "image": "",
         "sort_order": 30,
         "published": true,
-        "created_at": "2026-07-14 14:25:25",
-        "updated_at": "2026-07-14 14:25:25"
+        "created_at": "2026-07-14 17:05:17",
+        "updated_at": "2026-07-14 17:05:17"
     }
 ]
