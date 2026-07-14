@@ -67,11 +67,26 @@
         "slug": "house-cleaning",
         "title": "ハウスクリーニング事業部はじめました！！",
         "category": "サービス",
-        "body": "ハウスクリーニング事業部の案内カードです。本文と代表画像は、現状サイトの内容を確認しながら整えていきます。",
-        "image": "",
+        "body": "ハウスクリーニング事業部を開始しました。住まいの気になる汚れや日常清掃では手が届きにくい場所も、現場に合わせて丁寧に対応します。",
+        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2025/04/1d8e53cfe20d9fdf0bbb0e79a284ff38-849x1200.png",
         "sort_order": 30,
         "published": true,
         "created_at": "2026-07-14 17:05:17",
-        "updated_at": "2026-07-14 17:05:17"
+        "updated_at": "2026-07-14 21:07:17"
+    },
+    {
+        "id": 1784030837,
+        "card_number": "000007",
+        "card_type": "サービス",
+        "layout": "ImageRight",
+        "slug": "infection-control",
+        "title": "感染症対策について",
+        "category": "サービス",
+        "body": "感染症対策として、衛生面に配慮した取り組みを行っています。現場や施設の状況に合わせて、安心してご相談いただける体制を整えています。",
+        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2025/04/e3b8987e1fa712894134fc8905612faf-1200x623.png",
+        "sort_order": 40,
+        "published": true,
+        "created_at": "2026-07-14 21:07:17",
+        "updated_at": "2026-07-14 21:07:17"
     }
 ]

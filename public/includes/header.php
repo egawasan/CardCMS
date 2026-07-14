@@ -132,6 +132,13 @@ main{
     min-height:260px;
     height:100%;
     aspect-ratio:auto;
+    background:white;
+}
+
+.card.layout-imageleft .card-image img,
+.card.layout-imageright .card-image img{
+    object-fit:contain;
+    padding:10px;
 }
 
 .card.layout-imageleft .card-body,

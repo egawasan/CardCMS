@@ -46,6 +46,9 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 ・main-visual は本文を空にして画像だけのHeroカードに整理
 ・top-intro カードを正式な紹介文カードとして更新
 ・house-cleaning カードを追加
+・house-cleaning カードに代表画像と本文を設定
+・infection-control カードを追加
+・ImageLeft / ImageRight の画像を切れにくい表示へ調整
 
 【成果】
 
@@ -64,11 +67,12 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 ・WordPressトップページの主要ブロックをCardCMSのカードとして整理できた
 ・トップページの先頭3ブロックをカードとして扱う形にできた
 ・メイン画像と紹介文を別々のカードとして役割分担できた
+・ハウスクリーニングと感染症対策をサービスカードとして表示できるようになった
 
 【次回予定】
 
-・house-cleaning カードの本文と代表画像を整理する
-・infection-control カードを追加する
+・four-points カードを追加する
+・business-services カードを追加する
 ・Contact の表示方針を決める
 
 ---
