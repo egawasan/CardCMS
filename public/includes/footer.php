@@ -1,3 +1,11 @@
+<nav class="fixed-menu" aria-label="固定メニュー">
+    <ul>
+        <li><a href="#honsha" class="factory">本社・工場</a></li>
+        <li><a href="#mail" class="mail">メール</a></li>
+        <li><a href="tel:073-477-5000" class="tel">電話</a></li>
+    </ul>
+</nav>
+
 <footer>CardCMS Version 1.3</footer>
 
 <script>
