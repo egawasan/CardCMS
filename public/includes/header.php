@@ -18,6 +18,7 @@ body{
     font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
     background:#f4f6f8;
     color:#25313d;
+    line-height:1.75;
     padding-bottom:74px;
 }
 
@@ -69,7 +70,7 @@ main{
 .card-grid{
     display:grid;
     grid-template-columns:1fr;
-    gap:22px;
+    gap:26px;
 }
 
 .card{
@@ -134,7 +135,7 @@ main{
 
 .card.layout-imageleft .card-body,
 .card.layout-imageright .card-body{
-    padding:20px;
+    padding:26px 28px 24px;
 }
 
 .card.layout-gallery .card-image{
@@ -148,7 +149,7 @@ main{
 }
 
 .card.layout-gallery .card-body{
-    padding:14px;
+    padding:24px 28px 22px;
 }
 
 .card.layout-gallery .card-title{
@@ -164,11 +165,11 @@ main{
 }
 
 .card.layout-text .card-body{
-    padding:20px;
+    padding:26px 28px 24px;
 }
 
 .card.layout-contact .card-body{
-    padding:20px;
+    padding:26px 28px 24px;
 }
 
 .card-image{
@@ -190,31 +191,32 @@ main{
 }
 
 .card-body{
-    padding:16px;
+    padding:24px 28px 22px;
 }
 
 .category{
     display:inline-block;
-    padding:4px 8px;
-    border-radius:4px;
-    background:#eaf3fb;
-    color:#21618c;
-    font-size:12px;
+    padding:0;
+    color:#657586;
+    font-size:13px;
     font-weight:bold;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .card-title{
-    margin:0 0 10px;
-    font-size:18px;
-    line-height:1.4;
+    margin:0 0 14px;
+    padding-bottom:10px;
+    border-bottom:1px solid #e4e9ef;
+    color:#1f2d3d;
+    font-size:24px;
+    line-height:1.45;
 }
 
 .card-text{
     margin:0;
-    color:#4f5f6f;
-    font-size:14px;
-    line-height:1.7;
+    color:#3f4d5a;
+    font-size:16px;
+    line-height:1.9;
     white-space:pre-wrap;
 }
 
@@ -321,8 +323,36 @@ footer{
 }
 
 @media (max-width:640px){
+    main{
+        width:94%;
+        margin-top:18px;
+    }
+
+    .card-grid{
+        gap:18px;
+    }
+
     .card.layout-hero .card-text{
         font-size:16px;
+    }
+
+    .card-body,
+    .card.layout-imageleft .card-body,
+    .card.layout-imageright .card-body,
+    .card.layout-gallery .card-body,
+    .card.layout-text .card-body,
+    .card.layout-contact .card-body{
+        padding:18px;
+    }
+
+    .card-title{
+        font-size:20px;
+        line-height:1.45;
+    }
+
+    .card-text{
+        font-size:15px;
+        line-height:1.85;
     }
 
     .toolbar{
