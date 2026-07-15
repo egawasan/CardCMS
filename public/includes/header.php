@@ -217,7 +217,7 @@ main{
     display:inline-block;
     padding:0;
     color:#657586;
-    font-size:13px;
+    font-size:14px;
     font-weight:bold;
     margin-bottom:8px;
 }
@@ -227,19 +227,19 @@ main{
     padding-bottom:10px;
     border-bottom:1px solid #e4e9ef;
     color:#1f2d3d;
-    font-size:24px;
+    font-size:27px;
     line-height:1.45;
 }
 
 .card-text{
     margin:0;
     color:#3f4d5a;
-    font-size:16px;
+    font-size:18px;
     line-height:1.9;
 }
 
 .card-paragraph{
-    margin:0 0 12px;
+    margin:0 0 14px;
 }
 
 .card-paragraph:last-child{
@@ -252,7 +252,7 @@ main{
 }
 
 .card-list li{
-    margin:0 0 8px;
+    margin:0 0 10px;
     padding-left:2px;
 }
 
@@ -264,7 +264,7 @@ main{
     display:grid;
     grid-template-columns:120px 1fr;
     gap:14px;
-    padding:10px 0;
+    padding:12px 0;
     border-bottom:1px solid #edf1f5;
 }
 
@@ -412,12 +412,12 @@ footer{
     }
 
     .card-title{
-        font-size:20px;
+        font-size:22px;
         line-height:1.45;
     }
 
     .card-text{
-        font-size:15px;
+        font-size:16px;
         line-height:1.85;
     }
 
