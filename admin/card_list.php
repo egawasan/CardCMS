@@ -25,22 +25,22 @@ function imageSrc($imagePath)
     return "../uploads/" . rawurlencode((string)$imagePath);
 }
 
-function cardNumberSortValue($card)
+function sortOrderValue($card)
 {
-    $cardNumber = $card['card_number'] ?? "";
+    $sortOrder = $card['sort_order'] ?? "";
 
-    if ($cardNumber !== "" && ctype_digit((string)$cardNumber)) {
-        return (int)$cardNumber;
+    if ($sortOrder !== "" && is_numeric($sortOrder)) {
+        return (int)$sortOrder;
     }
 
     return PHP_INT_MAX;
 }
 
 usort($cards, function ($a, $b) {
-    $numberCompare = cardNumberSortValue($a) <=> cardNumberSortValue($b);
+    $orderCompare = sortOrderValue($a) <=> sortOrderValue($b);
 
-    if ($numberCompare !== 0) {
-        return $numberCompare;
+    if ($orderCompare !== 0) {
+        return $orderCompare;
     }
 
     return ((int)($a['id'] ?? 0)) <=> ((int)($b['id'] ?? 0));
@@ -76,7 +76,7 @@ header{
 
 .container{
     width:90%;
-    max-width:1000px;
+    max-width:1200px;
     margin:30px auto;
     background:white;
     padding:30px;
@@ -123,6 +123,37 @@ td{
     background:#1f8f4f;
 }
 
+.order-number{
+    font-weight:bold;
+    color:#2c3e50;
+}
+
+.sort-actions a,
+.sort-actions span{
+    display:inline-block;
+    min-width:54px;
+    margin:2px;
+    padding:5px 8px;
+    border-radius:6px;
+    text-align:center;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.sort-actions a{
+    background:#eef5fb;
+    color:#21618c;
+}
+
+.sort-actions a:hover{
+    background:#d8ebf7;
+}
+
+.sort-actions span{
+    background:#f3f4f6;
+    color:#aaa;
+}
+
 </style>
 
 </head>
@@ -142,6 +173,7 @@ CardCMS 管理画面
 <table>
 
 <tr>
+<th>表示順</th>
 <th>カード番号</th>
 <th>種別</th>
 <th>レイアウト</th>
@@ -151,12 +183,15 @@ CardCMS 管理画面
 <th>カテゴリー</th>
 <th>更新日時</th>
 <th>公開</th>
+<th>順番</th>
 <th>操作</th>
 </tr>
 
-<?php foreach ($cards as $card): ?>
+<?php foreach ($cards as $index => $card): ?>
 
 <tr>
+
+    <td class="order-number"><?php echo h($card['sort_order'] ?? ""); ?></td>
 
     <td><?php echo h($card['card_number'] ?? ""); ?></td>
 
@@ -192,6 +227,20 @@ CardCMS 管理画面
         <?php
         echo !empty($card['published']) ? "○" : "×";
         ?>
+    </td>
+
+    <td class="sort-actions">
+        <?php if ($index > 0): ?>
+            <a href="../api/move_card.php?id=<?php echo h($card['id'] ?? ""); ?>&amp;direction=up">上へ</a>
+        <?php else: ?>
+            <span>上へ</span>
+        <?php endif; ?>
+
+        <?php if ($index < count($cards) - 1): ?>
+            <a href="../api/move_card.php?id=<?php echo h($card['id'] ?? ""); ?>&amp;direction=down">下へ</a>
+        <?php else: ?>
+            <span>下へ</span>
+        <?php endif; ?>
     </td>
 
     <td>
