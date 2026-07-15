@@ -262,10 +262,15 @@ main{
 
 .card-info-row{
     display:grid;
-    grid-template-columns:120px 1fr;
-    gap:14px;
+    grid-template-columns:170px 1fr;
+    gap:18px;
     padding:12px 0;
     border-bottom:1px solid #edf1f5;
+}
+
+.card-info-continuation{
+    padding-top:2px;
+    border-bottom:none;
 }
 
 .card-info-row:first-child{
@@ -433,6 +438,10 @@ footer{
     .card-info-row{
         grid-template-columns:1fr;
         gap:2px;
+    }
+
+    .card-info-continuation .card-info-label{
+        display:none;
     }
 
     .toolbar{

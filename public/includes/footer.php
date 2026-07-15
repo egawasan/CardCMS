@@ -54,28 +54,55 @@ function appendInfoRow(container, line){
     container.appendChild(row);
 }
 
+function appendInfoContinuation(container, line){
+    const row = document.createElement('div');
+    row.className = 'card-info-row card-info-continuation';
+
+    const spacer = document.createElement('span');
+    spacer.className = 'card-info-label';
+    spacer.textContent = '';
+
+    const value = document.createElement('span');
+    value.className = 'card-info-value';
+    value.textContent = line.trim();
+
+    row.appendChild(spacer);
+    row.appendChild(value);
+    container.appendChild(row);
+}
+
 function createBodyElement(text){
     const container = document.createElement('div');
     container.className = 'card-text';
+    let lastLineWasInfo = false;
 
     String(text).split(/\r?\n/).forEach(rawLine => {
         const line = rawLine.trim();
 
         if (line === '') {
+            lastLineWasInfo = false;
             return;
         }
 
         if (/^[・\-*]\s*/.test(line)) {
             appendListItem(container, line);
+            lastLineWasInfo = false;
             return;
         }
 
         if (/^[^:：]{1,14}[:：]/.test(line)) {
             appendInfoRow(container, line);
+            lastLineWasInfo = true;
+            return;
+        }
+
+        if (lastLineWasInfo) {
+            appendInfoContinuation(container, line);
             return;
         }
 
         container.appendChild(createTextElement('p', 'card-paragraph', line));
+        lastLineWasInfo = false;
     });
 
     return container;
