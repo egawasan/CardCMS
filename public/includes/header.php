@@ -151,8 +151,8 @@ main{
 .card-image-list{
     display:grid;
     grid-template-columns:1fr;
-    gap:12px;
-    padding:0 10px 12px;
+    gap:4px;
+    padding:0 6px 8px;
     background:white;
 }
 
@@ -164,7 +164,7 @@ main{
 .card-image-list .card-image img{
     height:auto;
     object-fit:contain;
-    padding:10px;
+    padding:4px;
 }
 
 .card.layout-gallery .card-body{
@@ -396,6 +396,15 @@ footer{
 
     .card-grid{
         gap:18px;
+    }
+
+    .card-image-list{
+        gap:2px;
+        padding:0 4px 6px;
+    }
+
+    .card-image-list .card-image img{
+        padding:2px;
     }
 
     .card.layout-hero .card-text{
