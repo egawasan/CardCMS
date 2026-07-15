@@ -2,6 +2,22 @@
 
 date_default_timezone_set("Asia/Tokyo");
 
+function parseAdditionalImages($value)
+{
+    $lines = preg_split("/\R/", (string)$value);
+    $images = [];
+
+    foreach ($lines as $line) {
+        $image = trim($line);
+
+        if ($image !== "") {
+            $images[] = $image;
+        }
+    }
+
+    return array_values(array_unique($images));
+}
+
 $id = $_POST['id'];
 $title = $_POST['title'];
 $card_type = $_POST['card_type'] ?? 'お知らせ';
@@ -11,6 +27,7 @@ $category = $_POST['category'];
 $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
 $published = isset($_POST['published']);
+$additional_images = parseAdditionalImages($_POST['additional_images'] ?? "");
 $now = date("Y-m-d H:i:s");
 
 // 現在の画像
@@ -47,6 +64,7 @@ foreach ($cards as &$card) {
         $card['category'] = $category;
         $card['body'] = $body;
         $card['image'] = $image;
+        $card['images'] = $additional_images;
         $card['sort_order'] = (int)$sort_order;
         $card['published'] = $published;
 

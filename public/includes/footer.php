@@ -27,6 +27,58 @@ function getImageSrc(imagePath){
     return '../uploads/' + encodeURIComponent(imagePath);
 }
 
+function getCardImages(card){
+    const images = [];
+
+    if (card.image) {
+        images.push(card.image);
+    }
+
+    if (Array.isArray(card.images)) {
+        card.images.forEach(imagePath => {
+            if (imagePath) {
+                images.push(imagePath);
+            }
+        });
+    }
+
+    return [...new Set(images)];
+}
+
+function createImageElement(imagePath, altText){
+    const image = document.createElement('img');
+    image.src = getImageSrc(imagePath);
+    image.alt = altText || 'カード画像';
+    return image;
+}
+
+function createSingleImageBox(imagePath, altText){
+    const imageBox = document.createElement('div');
+    imageBox.className = 'card-image';
+    imageBox.appendChild(createImageElement(imagePath, altText));
+    return imageBox;
+}
+
+function createImageList(card, imagePaths){
+    if (imagePaths.length === 1 || (card.layout || '') === 'Hero') {
+        return createSingleImageBox(imagePaths[0], card.title);
+    }
+
+    const imageList = document.createElement('div');
+    imageList.className = 'card-image-list';
+
+    imagePaths.forEach((imagePath, index) => {
+        const imageBox = createSingleImageBox(
+            imagePath,
+            (card.title || 'カード画像') + ' ' + (index + 1)
+        );
+
+        imageList.appendChild(imageBox);
+    });
+
+    return imageList;
+}
+
 function createCard(card){
     const article = document.createElement('article');
     article.className = 'card';
@@ -35,18 +87,6 @@ function createCard(card){
 
     if (card.slug) {
         article.id = card.slug;
-    }
-
-    const imageBox = document.createElement('div');
-    imageBox.className = 'card-image';
-
-    if (card.image) {
-        const image = document.createElement('img');
-        image.src = getImageSrc(card.image);
-        image.alt = card.title || 'カード画像';
-        imageBox.appendChild(image);
-    } else {
-        imageBox.textContent = '画像なし';
     }
 
     const body = document.createElement('div');
@@ -59,12 +99,14 @@ function createCard(card){
         body.appendChild(createTextElement('p', 'card-text', card.body));
     }
 
-    const showImage = Boolean(card.image);
+    const imagePaths = getCardImages(card);
+    const showImage = imagePaths.length > 0;
     const showBody = layout !== 'Hero' || card.body;
+    const imageBlock = showImage ? createImageList(card, imagePaths) : null;
 
     if (layout === 'Hero') {
         if (showImage) {
-            article.appendChild(imageBox);
+            article.appendChild(imageBlock);
         }
 
         if (showBody) {
@@ -76,7 +118,7 @@ function createCard(card){
         }
 
         if (showImage) {
-            article.appendChild(imageBox);
+            article.appendChild(imageBlock);
         }
     }
 

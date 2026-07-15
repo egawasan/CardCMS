@@ -148,6 +148,25 @@ main{
     object-fit:contain;
 }
 
+.card-image-list{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:0 10px 12px;
+    background:white;
+}
+
+.card-image-list .card-image{
+    aspect-ratio:auto;
+    background:white;
+}
+
+.card-image-list .card-image img{
+    height:auto;
+    object-fit:contain;
+    padding:10px;
+}
+
 .card.layout-gallery .card-body{
     padding:24px 28px 22px;
 }

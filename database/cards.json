@@ -129,6 +129,11 @@
         "category": "サービス",
         "body": "看板の制作、現場での施工、設置後の点検まで一貫して対応します。現場の条件に合わせ、安全面にも配慮しながら作業を進めます。",
         "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2026/02/A6427D51-4EC5-46AE-85A4-3CEA7F9EDABB-600x450.jpg",
+        "images": [
+            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__316399620-450x600.jpg",
+            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/03/attachment00-6-450x600.jpg",
+            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__316399619-600x450.jpg"
+        ],
         "sort_order": 70,
         "published": true,
         "created_at": "2026-07-14 21:25:00",
@@ -144,6 +149,11 @@
         "category": "サービス",
         "body": "看板の落下や倒壊などの事故を防ぐため、定期点検が大切です。施工後そのままになっている看板も、老朽化によって危険になる場合があります。",
         "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/8cff5ced3d23072681dfb881bd63dee0-600x412.png",
+        "images": [
+            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__318889989-600x450.jpg",
+            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__318889988-450x600.jpg",
+            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/263bd180fa03fdb321f7344a494a6ed1-395x600.png"
+        ],
         "sort_order": 80,
         "published": true,
         "created_at": "2026-07-14 21:25:00",

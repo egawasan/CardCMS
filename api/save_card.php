@@ -2,6 +2,22 @@
 
 date_default_timezone_set("Asia/Tokyo");
 
+function parseAdditionalImages($value)
+{
+    $lines = preg_split("/\R/", (string)$value);
+    $images = [];
+
+    foreach ($lines as $line) {
+        $image = trim($line);
+
+        if ($image !== "") {
+            $images[] = $image;
+        }
+    }
+
+    return array_values(array_unique($images));
+}
+
 // フォームから送られてきたデータを変数に入れる
 $title = $_POST['title'];
 $card_type = $_POST['card_type'] ?? 'お知らせ';
@@ -11,6 +27,7 @@ $category = $_POST['category'];
 $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
 $published = isset($_POST['published']);
+$additional_images = parseAdditionalImages($_POST['additional_images'] ?? "");
 
 // 現在のカード一覧を読み込む
 $cards = json_decode(file_get_contents("../database/cards.json"), true);
@@ -59,6 +76,7 @@ $card = [
     "category" => $category,
     "body" => $body,
     "image" => $image,
+    "images" => $additional_images,
     "sort_order" => (int)$sort_order,
     "published" => $published,
     "created_at" => $now,

@@ -94,6 +94,10 @@ textarea{
 
 }
 
+.small-textarea{
+	min-height:120px;
+}
+
 .image-box{
 
 	border:2px dashed #bbb;
@@ -304,6 +308,17 @@ CardCMS 管理画面
 <input type="file" name="image">
 
 </div>
+
+</div>
+
+<div class="row">
+
+<label>追加画像（1行に1つ）</label>
+
+<textarea
+	name="additional_images"
+	class="small-textarea"
+	placeholder="例: https://example.com/image.jpg"></textarea>
 
 </div>
 

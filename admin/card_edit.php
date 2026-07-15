@@ -7,6 +7,15 @@ function h($value)
     return htmlspecialchars((string)$value, ENT_QUOTES, "UTF-8");
 }
 
+function imageSrc($imagePath)
+{
+    if (preg_match("/^https?:\/\//", (string)$imagePath)) {
+        return $imagePath;
+    }
+
+    return "../uploads/" . rawurlencode((string)$imagePath);
+}
+
 // cards.json を読み込む
 $cards = json_decode(
     file_get_contents("../database/cards.json"),
@@ -40,6 +49,11 @@ $layout = $editCard['layout'] ?? "Text";
 $slug = $editCard['slug'] ?? "";
 $createdAt = $editCard['created_at'] ?? "未記録";
 $updatedAt = $editCard['updated_at'] ?? "未記録";
+$additionalImages = $editCard['images'] ?? [];
+
+if (!is_array($additionalImages)) {
+    $additionalImages = [];
+}
 
 $cardTypeOptions = ["トップページ", "お知らせ", "サービス", "会社情報", "お問い合わせ", "採用"];
 $layoutOptions = ["Hero", "Text", "ImageLeft", "ImageRight", "Gallery", "Contact"];
@@ -118,6 +132,10 @@ textarea{
 	min-height:220px;
 	resize:vertical;
 
+}
+
+.small-textarea{
+	min-height:120px;
 }
 
 .image-box{
@@ -353,7 +371,7 @@ CardCMS 管理画面
 <?php if (!empty($editCard['image'])): ?>
 
 <img
-    src="../uploads/<?php echo h($editCard['image']); ?>"
+    src="<?php echo h(imageSrc($editCard['image'])); ?>"
     width="200">
 
 <?php else: ?>
@@ -374,6 +392,17 @@ CardCMS 管理画面
 	type="hidden"
 	name="current_image"
 	value="<?php echo h($editCard['image'] ?? ""); ?>">
+
+</div>
+
+<div class="row">
+
+<label>追加画像（1行に1つ）</label>
+
+<textarea
+    name="additional_images"
+    class="small-textarea"
+    placeholder="例: https://example.com/image.jpg"><?php echo h(implode("\n", $additionalImages)); ?></textarea>
 
 </div>
 

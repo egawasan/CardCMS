@@ -16,6 +16,15 @@ function h($value)
     return htmlspecialchars((string)$value, ENT_QUOTES, "UTF-8");
 }
 
+function imageSrc($imagePath)
+{
+    if (preg_match("/^https?:\/\//", (string)$imagePath)) {
+        return $imagePath;
+    }
+
+    return "../uploads/" . rawurlencode((string)$imagePath);
+}
+
 function cardNumberSortValue($card)
 {
     $cardNumber = $card['card_number'] ?? "";
@@ -162,7 +171,7 @@ CardCMS 管理画面
 <?php if (!empty($card['image'])): ?>
 
 <img
-    src="../uploads/<?php echo h($card['image']); ?>"
+    src="<?php echo h(imageSrc($card['image'])); ?>"
     width="80">
 
 <?php else: ?>
