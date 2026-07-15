@@ -38,7 +38,7 @@
         "title": "メイン画像",
         "category": "トップページ",
         "body": "",
-        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/01/S__211738626_0-1200x900.jpg",
+        "image": "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/01\/S__211738626_0-1200x900.jpg",
         "sort_order": 10,
         "published": true,
         "created_at": "2026-07-14 17:05:17",
@@ -51,13 +51,14 @@
         "layout": "Text",
         "slug": "top-intro",
         "title": "紹介文",
-        "category": "トップページ",
-        "body": "有限会社市場工芸は、看板のデザイン・製作、施工、点検、アフターメンテナンスまで幅広く対応しています。お客様の目的や現場に合わせて、必要な内容を一つずつ形にしていきます。",
+        "category": "お知らせ",
+        "body": "有限会社市場工芸は\r\n看板のデザイン・製作\r\n施工、点検、アフターメンテナンス\r\nさらに建築関係まで\r\n\r\nさまざまなニーズに対応致します！！\r\nまずはお気軽にお問い合わせください。",
         "image": "",
         "sort_order": 20,
         "published": true,
         "created_at": "2026-07-14 14:25:25",
-        "updated_at": "2026-07-14 17:05:17"
+        "updated_at": "2026-07-15 11:47:34",
+        "images": []
     },
     {
         "id": 1784016317,
@@ -68,7 +69,7 @@
         "title": "ハウスクリーニング事業部はじめました！！",
         "category": "サービス",
         "body": "ハウスクリーニング事業部を開始しました。住まいの気になる汚れや日常清掃では手が届きにくい場所も、現場に合わせて丁寧に対応します。",
-        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2025/04/1d8e53cfe20d9fdf0bbb0e79a284ff38-849x1200.png",
+        "image": "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2025\/04\/1d8e53cfe20d9fdf0bbb0e79a284ff38-849x1200.png",
         "sort_order": 30,
         "published": true,
         "created_at": "2026-07-14 17:05:17",
@@ -83,7 +84,7 @@
         "title": "感染症対策について",
         "category": "サービス",
         "body": "感染症対策として、衛生面に配慮した取り組みを行っています。現場や施設の状況に合わせて、安心してご相談いただける体制を整えています。",
-        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2025/04/e3b8987e1fa712894134fc8905612faf-1200x623.png",
+        "image": "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2025\/04\/e3b8987e1fa712894134fc8905612faf-1200x623.png",
         "sort_order": 40,
         "published": true,
         "created_at": "2026-07-14 21:07:17",
@@ -111,13 +112,14 @@
         "layout": "ImageLeft",
         "slug": "business-services",
         "title": "事業内容",
-        "category": "サービス",
-        "body": "カルプ文字、金属文字、カッティングシート、懸垂幕、マグネット、カーラッピング、プレート看板、電飾看板、銘板、野立て看板、インクジェットシート、スタンド看板など、各種看板製作に対応します。",
-        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2020/12/7619881099f09933cf3a70fd4a2aeb72-1-600x368.png",
+        "category": "お知らせ",
+        "body": "1.カルプ文字、金属文字、2.カッティングシート、3.懸垂幕、4.マグネット、カーラッピング、5.プレート看板、6.突き出し電飾看板、7.壁面電飾看板、8.銘板、9.野立て看板、10.インクジェットシート／すりガラスシート、11.スタンド看板など、\r\nその他各種看板製作を承ります。\r\n一度ご相談ください。",
+        "image": "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2020\/12\/7619881099f09933cf3a70fd4a2aeb72-1-600x368.png",
         "sort_order": 60,
         "published": true,
         "created_at": "2026-07-14 21:25:00",
-        "updated_at": "2026-07-14 21:25:00"
+        "updated_at": "2026-07-15 11:30:30",
+        "images": []
     },
     {
         "id": 1784031903,
@@ -126,18 +128,18 @@
         "layout": "ImageRight",
         "slug": "production-construction-inspection",
         "title": "制作・施工・点検",
-        "category": "サービス",
+        "category": "お知らせ",
         "body": "看板の制作、現場での施工、設置後の点検まで一貫して対応します。現場の条件に合わせ、安全面にも配慮しながら作業を進めます。",
-        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2026/02/A6427D51-4EC5-46AE-85A4-3CEA7F9EDABB-600x450.jpg",
+        "image": "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2026\/02\/A6427D51-4EC5-46AE-85A4-3CEA7F9EDABB-600x450.jpg",
         "images": [
-            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__316399620-450x600.jpg",
-            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/03/attachment00-6-450x600.jpg",
-            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__316399619-600x450.jpg"
+            "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/12\/S__316399620-450x600.jpg",
+            "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/03\/attachment00-6-450x600.jpg",
+            "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/12\/S__316399619-600x450.jpg"
         ],
         "sort_order": 70,
         "published": true,
         "created_at": "2026-07-14 21:25:00",
-        "updated_at": "2026-07-14 21:25:00"
+        "updated_at": "2026-07-15 12:07:40"
     },
     {
         "id": 1784031904,
@@ -148,11 +150,11 @@
         "title": "保守点検について",
         "category": "サービス",
         "body": "看板の落下や倒壊などの事故を防ぐため、定期点検が大切です。施工後そのままになっている看板も、老朽化によって危険になる場合があります。",
-        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/8cff5ced3d23072681dfb881bd63dee0-600x412.png",
+        "image": "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/12\/8cff5ced3d23072681dfb881bd63dee0-600x412.png",
         "images": [
-            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__318889989-600x450.jpg",
-            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/S__318889988-450x600.jpg",
-            "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/12/263bd180fa03fdb321f7344a494a6ed1-395x600.png"
+            "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/12\/S__318889989-600x450.jpg",
+            "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/12\/S__318889988-450x600.jpg",
+            "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/12\/263bd180fa03fdb321f7344a494a6ed1-395x600.png"
         ],
         "sort_order": 80,
         "published": true,
@@ -167,12 +169,12 @@
         "slug": "head-office-factory",
         "title": "本社・工場のご案内",
         "category": "会社情報",
-        "body": "住所: 〒649-6264 和歌山市新庄388-4\n電話: 073-477-5000\nFAX: 073-477-5310",
-        "image": "https://www.ichiba-k.jp/2020/wp-content/uploads/2021/01/kaisha.jpg",
+        "body": "住所: 〒649-6264 和歌山市新庄388-4\n電話: 073-477-5000\nFAX: 073-477-5310\nGoogleマップ: https:\/\/goo.gl\/maps\/4zPWGC3Lg1DbE32K6",
+        "image": "https:\/\/www.ichiba-k.jp\/2020\/wp-content\/uploads\/2021\/01\/kaisha.jpg",
         "sort_order": 90,
         "published": true,
         "created_at": "2026-07-14 21:25:00",
-        "updated_at": "2026-07-14 21:25:00"
+        "updated_at": "2026-07-15 13:09:32"
     },
     {
         "id": 1784031906,
@@ -181,13 +183,14 @@
         "layout": "Text",
         "slug": "company-profile",
         "title": "会社概要",
-        "category": "会社情報",
-        "body": "会社名: 有限会社 市場工芸\n代表者: 代表取締役 野満英明\n創業: 昭和63年6月1日\n設立: 平成4年4月8日\n営業品目: 建築工事、内装工事、サイン工事の企画、製作、デザイン、設計、監理及び施工",
+        "category": "お知らせ",
+        "body": "会社名: 有限会社 市場工芸（ユウゲンガイシャ　イチバコウゲイ）\r\n代表者: 代表取締役 野満英明\r\n創業: 昭和63年6月1日\r\n設立: 平成4年4月8日\r\n資本金：1000万円\r\n取引金融機関：三十三銀行和歌山支店／紀陽銀行松江支店／きのくに信用金庫岩出支店\r\n営業品目: 建築工事、内装工事、サイン工事の企画、製作、デザイン、設計、監理及び施工、広報・広告に関する企画\r\n許可番号：［建設業許可］和歌山県知事（般ー４）第12428号\r\n　　　　　（建築・屋根・内装工事・大工・タイル・レンガ・ブロック・鋼管造物）工事業\r\n　　　　　［産業廃棄物収集運搬業許可］\r\n　　　　　和歌山県知事　第03000199972号\r\n　　　　　［屋外広告業許可登録］\r\n　　　　　［県内］\r\n　　　　　和歌山県第510号／和歌山市第383号\r\n　　　　　［県外］\r\n　　　　　大阪府第25022号\/大阪市第1431号\/東大阪市第16006号\/堺市第21375号\/枚方市第H29-0084号\/奈良県第688号の01\/京都府第894号\/兵庫県第1327号\/神戸市第101327号\/滋賀県第855号\/三重県第00890号\/愛知県第1099号\/名古屋市第1058号\/東京都第3346号\/高知県第160009-01号\/高知市第161007号\/福井市第1号\/京都市第2025号\r\n加入団体：和歌山県屋外広告美術協同組合／和歌山市商工会議所\r\n作業資格：小型移動式クレーン運転\/高所作業車運転\/玉掛け\/フルハーネス安全帯\/足場の組立て等の業務\/職長・安全衛生責任者教育\/屋外広告物点検\/アーク溶接\/床上クレーン\/低圧電気\/運行管理者\/ガス溶接\/切断砥石\/＋a\r\n国家技能資格：二級建築士\/屋外広告士\/広告粘着シート仕上げ作業\r\n沿革：昭和63年6月1日\t市場工芸（市場正幸）が事業主として創立。\r\n平成 4年4月8日\t有限会社市場工芸を設立。\r\n代表取締役に市場正幸が就任。\r\n平成24年9月1日\t代表取締役に野満英明が就任し、現在に至る。",
         "image": "",
         "sort_order": 100,
         "published": true,
         "created_at": "2026-07-14 21:25:00",
-        "updated_at": "2026-07-14 21:25:00"
+        "updated_at": "2026-07-15 11:12:36",
+        "images": []
     },
     {
         "id": 1784031907,

@@ -33,6 +33,26 @@ function appendListItem(container, line){
     list.appendChild(item);
 }
 
+function isUrl(text){
+    return /^https?:\/\//.test(String(text).trim());
+}
+
+function appendValueContent(container, text, labelText){
+    const valueText = String(text).trim();
+
+    if (isUrl(valueText)) {
+        const link = document.createElement('a');
+        link.href = valueText;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = /Google|マップ/.test(labelText) ? 'Googleマップで見る' : valueText;
+        container.appendChild(link);
+        return;
+    }
+
+    container.textContent = valueText;
+}
+
 function appendInfoRow(container, line){
     const parts = line.split(/[:：]/);
     const labelText = parts.shift().trim();
@@ -47,7 +67,7 @@ function appendInfoRow(container, line){
 
     const value = document.createElement('span');
     value.className = 'card-info-value';
-    value.textContent = valueText;
+    appendValueContent(value, valueText, labelText);
 
     row.appendChild(label);
     row.appendChild(value);
@@ -64,7 +84,7 @@ function appendInfoContinuation(container, line){
 
     const value = document.createElement('span');
     value.className = 'card-info-value';
-    value.textContent = line.trim();
+    appendValueContent(value, line.trim(), '');
 
     row.appendChild(spacer);
     row.appendChild(value);

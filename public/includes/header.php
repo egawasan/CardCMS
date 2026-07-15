@@ -291,6 +291,13 @@ main{
     color:#2f3d4a;
 }
 
+.card-info-value a{
+    color:#21618c;
+    font-weight:bold;
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
 .empty{
     background:white;
     border:1px solid #d9e0e7;
