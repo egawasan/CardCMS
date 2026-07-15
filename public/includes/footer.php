@@ -19,6 +19,68 @@ function createTextElement(tagName, className, text){
     return element;
 }
 
+function appendListItem(container, line){
+    let list = container.lastElementChild;
+
+    if (!list || !list.classList.contains('card-list')) {
+        list = document.createElement('ul');
+        list.className = 'card-list';
+        container.appendChild(list);
+    }
+
+    const item = document.createElement('li');
+    item.textContent = line.replace(/^[・\-*]\s*/, '');
+    list.appendChild(item);
+}
+
+function appendInfoRow(container, line){
+    const parts = line.split(/[:：]/);
+    const labelText = parts.shift().trim();
+    const valueText = parts.join(':').trim();
+
+    const row = document.createElement('div');
+    row.className = 'card-info-row';
+
+    const label = document.createElement('span');
+    label.className = 'card-info-label';
+    label.textContent = labelText;
+
+    const value = document.createElement('span');
+    value.className = 'card-info-value';
+    value.textContent = valueText;
+
+    row.appendChild(label);
+    row.appendChild(value);
+    container.appendChild(row);
+}
+
+function createBodyElement(text){
+    const container = document.createElement('div');
+    container.className = 'card-text';
+
+    String(text).split(/\r?\n/).forEach(rawLine => {
+        const line = rawLine.trim();
+
+        if (line === '') {
+            return;
+        }
+
+        if (/^[・\-*]\s*/.test(line)) {
+            appendListItem(container, line);
+            return;
+        }
+
+        if (/^[^:：]{1,14}[:：]/.test(line)) {
+            appendInfoRow(container, line);
+            return;
+        }
+
+        container.appendChild(createTextElement('p', 'card-paragraph', line));
+    });
+
+    return container;
+}
+
 function getImageSrc(imagePath){
     if (/^https?:\/\//.test(imagePath)) {
         return imagePath;
@@ -96,7 +158,7 @@ function createCard(card){
     body.appendChild(createTextElement('h3', 'card-title', card.title || '無題'));
 
     if (card.body) {
-        body.appendChild(createTextElement('p', 'card-text', card.body));
+        body.appendChild(createBodyElement(card.body));
     }
 
     const imagePaths = getCardImages(card);

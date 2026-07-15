@@ -236,7 +236,54 @@ main{
     color:#3f4d5a;
     font-size:16px;
     line-height:1.9;
-    white-space:pre-wrap;
+}
+
+.card-paragraph{
+    margin:0 0 12px;
+}
+
+.card-paragraph:last-child{
+    margin-bottom:0;
+}
+
+.card-list{
+    margin:4px 0 0;
+    padding-left:1.25em;
+}
+
+.card-list li{
+    margin:0 0 8px;
+    padding-left:2px;
+}
+
+.card-list li:last-child{
+    margin-bottom:0;
+}
+
+.card-info-row{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:14px;
+    padding:10px 0;
+    border-bottom:1px solid #edf1f5;
+}
+
+.card-info-row:first-child{
+    padding-top:0;
+}
+
+.card-info-row:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.card-info-label{
+    color:#657586;
+    font-weight:bold;
+}
+
+.card-info-value{
+    color:#2f3d4a;
 }
 
 .empty{
@@ -372,6 +419,11 @@ footer{
     .card-text{
         font-size:15px;
         line-height:1.85;
+    }
+
+    .card-info-row{
+        grid-template-columns:1fr;
+        gap:2px;
     }
 
     .toolbar{

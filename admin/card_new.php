@@ -74,6 +74,13 @@ label{
 	color:#555;
 }
 
+.help-text{
+	margin:6px 0 10px;
+	color:#777;
+	font-size:14px;
+	line-height:1.6;
+}
+
 input[type=text],
 input[type=number],
 select,
@@ -280,6 +287,10 @@ CardCMS 管理画面
 <div class="row">
 
 <label>本文</label>
+
+<div class="help-text">
+普通の文章はそのまま、箇条書きは「・」から、住所や電話は「項目: 内容」の形で入力します。
+</div>
 
 <textarea
 	name="body"
