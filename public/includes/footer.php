@@ -201,7 +201,6 @@ function createCard(card){
     const body = document.createElement('div');
     body.className = 'card-body';
 
-    body.appendChild(createTextElement('div', 'category', card.category || '未分類'));
     body.appendChild(createTextElement('h3', 'card-title', card.title || '無題'));
 
     if (card.body) {
