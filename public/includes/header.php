@@ -163,14 +163,17 @@ main{
 }
 
 .card-image-list .card-image{
+    display:block;
     aspect-ratio:auto;
     background:white;
+    line-height:0;
 }
 
 .card-image-list .card-image img{
     height:auto;
     object-fit:contain;
     padding:4px;
+    vertical-align:top;
 }
 
 .card.layout-gallery .card-body{
@@ -436,12 +439,12 @@ footer{
     }
 
     .card-image-list{
-        gap:2px;
-        padding:0 4px 6px;
+        gap:0;
+        padding:0 0 4px;
     }
 
     .card-image-list .card-image img{
-        padding:2px;
+        padding:0;
     }
 
     .card.layout-hero .card-text{
