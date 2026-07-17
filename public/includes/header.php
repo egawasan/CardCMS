@@ -235,6 +235,7 @@ main{
     color:#1f2d3d;
     font-size:27px;
     line-height:1.45;
+    text-align:center;
 }
 
 .card-text{
