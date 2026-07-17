@@ -502,7 +502,7 @@ footer{
     <div class="header-inner">
         <img
             class="site-logo"
-            src="https://www.ichiba-k.jp/2020/wp-content/uploads/2020/12/9b7d91cff75d2687ea6b30e403f540c9.png"
+            src="../uploads/9b7d91cff75d2687ea6b30e403f540c9.png"
             alt="有限会社市場工芸">
     </div>
 </header>

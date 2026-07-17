@@ -22,13 +22,16 @@ if (!is_array($cards)) {
 
 $imageUsage = [];
 
-foreach ($cards as $card) {
-
-    if (empty($card['image'])) {
-        continue;
+function addImageUsage(&$imageUsage, $imageName, $card) {
+    if (empty($imageName)) {
+        return;
     }
 
-    $imageName = (string)$card['image'];
+    $imageName = (string)$imageName;
+
+    if (preg_match("/^https?:\/\//", $imageName)) {
+        $imageName = basename(parse_url($imageName, PHP_URL_PATH) ?? $imageName);
+    }
 
     if (!isset($imageUsage[$imageName])) {
         $imageUsage[$imageName] = [];
@@ -38,7 +41,16 @@ foreach ($cards as $card) {
         "id" => $card['id'] ?? '',
         "title" => $card['title'] ?? '無題'
     ];
+}
 
+foreach ($cards as $card) {
+    addImageUsage($imageUsage, $card['image'] ?? '', $card);
+
+    if (!empty($card['images']) && is_array($card['images'])) {
+        foreach ($card['images'] as $imageName) {
+            addImageUsage($imageUsage, $imageName, $card);
+        }
+    }
 }
 
 usort($imageFiles, function($a, $b) {
