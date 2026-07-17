@@ -201,7 +201,9 @@ function createCard(card){
     const body = document.createElement('div');
     body.className = 'card-body';
 
-    body.appendChild(createTextElement('h3', 'card-title', card.title || '無題'));
+    if (card.slug !== 'top-intro') {
+        body.appendChild(createTextElement('h3', 'card-title', card.title || '無題'));
+    }
 
     if (card.body) {
         body.appendChild(createBodyElement(card.body));
