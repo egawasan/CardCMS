@@ -11,6 +11,9 @@
 
 :root{
     --page-max-width:1200px;
+    --text-panel-bg:#f5f9fc;
+    --text-panel-border:#d8e6f0;
+    --text-panel-color:#2d3f4f;
 }
 
 body{
@@ -110,6 +113,9 @@ main{
     color:white;
     font-size:18px;
     line-height:1.9;
+    background:transparent;
+    border:none;
+    padding:0;
 }
 
 .card.layout-imageleft,
@@ -233,9 +239,27 @@ main{
 
 .card-text{
     margin:0;
-    color:#3f4d5a;
+    color:var(--text-panel-color);
     font-size:18px;
     line-height:1.9;
+    background:var(--text-panel-bg);
+    border:1px solid var(--text-panel-border);
+    border-radius:6px;
+    padding:16px 18px;
+}
+
+#top-intro .card-text{
+    background:#1f5d84;
+    border-color:#1f5d84;
+    color:white;
+    text-align:center;
+}
+
+#top-intro .card-paragraph:nth-child(2),
+#top-intro .card-paragraph:nth-child(3),
+#top-intro .card-paragraph:nth-child(4){
+    color:#fff06a;
+    font-weight:bold;
 }
 
 .card-paragraph{
@@ -440,6 +464,7 @@ footer{
     .card-text{
         font-size:16px;
         line-height:1.85;
+        padding:14px;
     }
 
     .card-info-row{
