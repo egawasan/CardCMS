@@ -242,43 +242,19 @@ function showEmptyMessage(){
     cardGrid.appendChild(empty);
 }
 
-fetch('../database/cards.json')
-    .then(response => response.json())
-    .then(cards => {
-        const publishedCards = Array.isArray(cards)
-            ? cards
-                .filter(card => card.published)
-                .sort((a, b) => {
-                    const orderA = Number(a.sort_order || 0);
-                    const orderB = Number(b.sort_order || 0);
+const publishedCards = Array.isArray(window.cardData) ? window.cardData : [];
 
-                    if (orderA !== orderB) {
-                        return orderA - orderB;
-                    }
+if (cardCount) {
+    cardCount.textContent = publishedCards.length + '件表示';
+}
 
-                    return Number(b.id || 0) - Number(a.id || 0);
-                })
-            : [];
-
-        if (cardCount) {
-            cardCount.textContent = publishedCards.length + '件表示';
-        }
-
-        if (publishedCards.length === 0) {
-            showEmptyMessage();
-            return;
-        }
-
-        publishedCards.forEach(card => {
-            cardGrid.appendChild(createCard(card));
-        });
-    })
-    .catch(() => {
-        if (cardCount) {
-            cardCount.textContent = '読み込みエラー';
-        }
-        showEmptyMessage();
+if (publishedCards.length === 0) {
+    showEmptyMessage();
+} else {
+    publishedCards.forEach(card => {
+        cardGrid.appendChild(createCard(card));
     });
+}
 </script>
 
 </body>
