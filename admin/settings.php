@@ -31,6 +31,19 @@ foreach ($cards as $card) {
     }
 }
 
+$phpVersion = PHP_VERSION;
+
+if (version_compare($phpVersion, "8.2.0", ">=")) {
+    $phpStatus = "OK（推奨範囲）";
+    $phpStatusClass = "status-ok";
+} elseif (version_compare($phpVersion, "8.0.0", ">=")) {
+    $phpStatus = "利用可能。ただしPHP 8.2以上を推奨";
+    $phpStatusClass = "status-warn";
+} else {
+    $phpStatus = "要確認。PHP 8.0以上へ変更を推奨";
+    $phpStatusClass = "status-danger";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -108,6 +121,21 @@ th{
     background:#2980b9;
 }
 
+.status-ok{
+    color:#1f7a4d;
+    font-weight:bold;
+}
+
+.status-warn{
+    color:#9a6b00;
+    font-weight:bold;
+}
+
+.status-danger{
+    color:#a32820;
+    font-weight:bold;
+}
+
 footer{
     text-align:center;
     color:#888;
@@ -128,11 +156,15 @@ footer{
 <table>
     <tr>
         <th>バージョン</th>
-        <td>CardCMS Version 1.3</td>
+        <td>CardCMS Version 1.4（開発中）</td>
     </tr>
     <tr>
         <th>PHPバージョン</th>
-        <td><?php echo h(PHP_VERSION); ?></td>
+        <td><?php echo h($phpVersion); ?></td>
+    </tr>
+    <tr>
+        <th>PHP判定</th>
+        <td><span class="<?php echo h($phpStatusClass); ?>"><?php echo h($phpStatus); ?></span></td>
     </tr>
     <tr>
         <th>カード件数</th>
@@ -158,7 +190,7 @@ footer{
 
 </div>
 
-<footer>CardCMS Version 1.3</footer>
+<footer>CardCMS Version 1.4</footer>
 
 </body>
 </html>

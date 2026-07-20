@@ -107,7 +107,7 @@ cardcms_require_admin();
 </div>
 
 <footer>
-	CardCMS Version 1.3
+	CardCMS Version 1.4
 </footer>
 
 </body>

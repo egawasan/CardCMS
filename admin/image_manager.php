@@ -287,7 +287,7 @@ footer{
 
 </div>
 
-<footer>CardCMS Version 1.3</footer>
+<footer>CardCMS Version 1.4</footer>
 
 </body>
 </html>

@@ -462,7 +462,7 @@ CardCMS 管理画面
 
 <footer>
 
-CardCMS Version 1.3
+CardCMS Version 1.4
 
 </footer>
 
