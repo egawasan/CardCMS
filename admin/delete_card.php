@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__ . "/../includes/auth.php";
+
+cardcms_require_admin();
+
 $id = $_GET['id'] ?? '';
 
 $cards = json_decode(

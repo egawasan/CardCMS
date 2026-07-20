@@ -1,5 +1,14 @@
 <?php
 
+require_once __DIR__ . "/../includes/auth.php";
+
+cardcms_require_admin();
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: ../admin/index.php");
+    exit;
+}
+
 date_default_timezone_set("Asia/Tokyo");
 
 function parseAdditionalImages($value)

@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__ . "/../includes/auth.php";
+
+cardcms_require_admin();
+
 function h($value) {
     return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
 }

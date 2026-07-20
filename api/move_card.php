@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__ . "/../includes/auth.php";
+
+cardcms_require_admin();
+
 date_default_timezone_set("Asia/Tokyo");
 
 $id = $_GET['id'] ?? "";

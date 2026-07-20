@@ -1,3 +1,11 @@
+<?php
+
+require_once __DIR__ . "/../includes/auth.php";
+
+cardcms_require_admin();
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -91,6 +99,8 @@
 		<a href="image_manager.php">🖼 画像管理</a>
 
 		<a href="settings.php">⚙️ システム情報</a>
+
+		<a href="logout.php">ログアウト</a>
 
 	</div>
 

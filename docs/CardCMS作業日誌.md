@@ -8,6 +8,37 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 
 ---
 
+## 2026-07-20
+
+### Version 1.4 admin画面保護の第一段階
+
+【本日の作業】
+
+・admin画面のログイン保護の仕組みを追加
+・apiにも同じログイン保護を追加
+・admin/login.php を作成
+・admin/logout.php を作成
+・includes/auth.php を作成
+・config/auth.example.php を作成
+・config/auth.php をGitHubへ送らないように .gitignore へ追加
+・save_card.php、update_card.php、delete_card.php は直接URLを開いた場合に管理メニューへ戻すようにした
+・docs/008_管理画面保護メモ.md を作成
+
+【成果】
+
+・未ログインで admin/index.php を開くとログイン画面へ移動するようになった
+・未ログインで api/save_card.php を開いてもログイン画面へ移動するようになった
+・config/auth.php が未設定の場合は、管理画面を開かず「管理画面保護の設定が必要です」と表示するようになった
+・パスワードをGitHubやチャットに書かない方針をコードと文書に反映した
+
+【次回予定】
+
+・config/auth.php を安全に作成する
+・管理画面用パスワードを設定する
+・ログインできるか確認する
+
+---
+
 ## 2026-07-18
 
 ### Version 1.4 さくらアップロード準備開始

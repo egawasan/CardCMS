@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__ . "/../includes/auth.php";
+
+cardcms_require_admin();
+
 // cards.json を読み込む
 $cards = json_decode(
     file_get_contents("../database/cards.json"),
