@@ -13,6 +13,16 @@ function cardcms_auth_config_path()
     return __DIR__ . "/../config/auth.php";
 }
 
+function cardcms_auth_is_local_request()
+{
+    $remoteAddress = (string)($_SERVER["REMOTE_ADDR"] ?? "");
+    $httpHost = strtolower((string)($_SERVER["HTTP_HOST"] ?? ""));
+    $httpHost = preg_replace("/:\d+$/", "", $httpHost);
+
+    return in_array($remoteAddress, ["127.0.0.1", "::1"], true)
+        || in_array($httpHost, ["localhost", "127.0.0.1", "[::1]"], true);
+}
+
 function cardcms_auth_config()
 {
     static $config = null;

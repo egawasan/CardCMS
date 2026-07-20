@@ -133,6 +133,20 @@ button:hover{
     margin-top:18px;
 }
 
+.setup-link{
+    display:inline-block;
+    background:#3498db;
+    border-radius:8px;
+    color:white;
+    margin-top:18px;
+    padding:12px 18px;
+    text-decoration:none;
+}
+
+.setup-link:hover{
+    background:#2980b9;
+}
+
 code{
     background:#f3f6f9;
     border-radius:4px;
@@ -160,6 +174,12 @@ code{
     <p class="note">
         パスワードそのものはGitHubやチャットには書かず、<code>config/auth.php</code> だけに保存します。
     </p>
+
+<?php if (cardcms_auth_is_local_request()): ?>
+
+    <a href="setup_auth.php" class="setup-link">初期設定を開く</a>
+
+<?php endif; ?>
 
 <?php else: ?>
 

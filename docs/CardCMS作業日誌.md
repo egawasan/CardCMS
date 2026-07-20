@@ -20,6 +20,8 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 ・admin/logout.php を作成
 ・includes/auth.php を作成
 ・config/auth.example.php を作成
+・admin/setup_auth.php を作成
+・config/.htaccess を作成
 ・config/auth.php をGitHubへ送らないように .gitignore へ追加
 ・save_card.php、update_card.php、delete_card.php は直接URLを開いた場合に管理メニューへ戻すようにした
 ・docs/008_管理画面保護メモ.md を作成
@@ -29,11 +31,13 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 ・未ログインで admin/index.php を開くとログイン画面へ移動するようになった
 ・未ログインで api/save_card.php を開いてもログイン画面へ移動するようになった
 ・config/auth.php が未設定の場合は、管理画面を開かず「管理画面保護の設定が必要です」と表示するようになった
+・ローカル専用の初期設定ページから、安全に config/auth.php を作成できる準備ができた
+・config フォルダも直接アクセスを拒否する準備ができた
 ・パスワードをGitHubやチャットに書かない方針をコードと文書に反映した
 
 【次回予定】
 
-・config/auth.php を安全に作成する
+・初期設定ページから config/auth.php を安全に作成する
 ・管理画面用パスワードを設定する
 ・ログインできるか確認する
 
