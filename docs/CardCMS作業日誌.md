@@ -50,11 +50,19 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 ・管理画面のシステム情報にPHP判定を追加した
 ・CardCMSの画面表示バージョンを Version 1.4 に更新した
 ・docs/010_PHPバージョン確認.md を作成した
+・/Users/egawakiyoo/Desktop/CardCMS_upload/cardcms-test/ を作成した
+・/Users/egawakiyoo/Desktop/CardCMS_upload/cardcms-test.zip を作成した
+・最初のZIPにMac補助ファイルが含まれたため、補助ファイルなしで作り直した
+・アップロード用フォルダのPHP構文チェックを行った
+・アップロード用フォルダの認証設定とカードデータを確認した
+・アップロード用フォルダを一時ローカルサーバーで確認した
+・docs/011_テストアップロード手順.md を作成した
 
 【次回予定】
 
 ・さくらサーバー上でPHPバージョンを確認する
-・テストアップロード用ファイルを準備する
+・さくらサーバーへ cardcms-test をアップロードする
+・テストURLで公開ページと管理画面を確認する
 
 ---
 
