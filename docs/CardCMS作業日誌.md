@@ -8,6 +8,37 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 
 ---
 
+## 2026-07-21
+
+### Version 1.4 テストアップ確認済み
+
+【本日の作業】
+
+・さくらレンタルサーバーのFTP接続先を確認
+・WEB公開フォルダーが `~/www/` であることを確認
+・サーバー側の `www/cardcms-test/` にテスト用CardCMSを配置
+・公開URL `https://ichiba-kogei.sakura.ne.jp/cardcms-test/` を確認
+・管理画面ログインURL `https://ichiba-kogei.sakura.ne.jp/cardcms-test/admin/login.php` を確認
+・未ログインで管理画面本体を開くとログイン画面へ戻ることを確認
+・`database/cards.json` が外部から直接見えないことを確認
+・`config/auth.php` が外部から直接見えないことを確認
+
+【成果】
+
+・さくらサーバーへのテストアップが成功した
+・公開ページと管理画面がテストURLで開ける状態になった
+・大切なデータファイルと認証設定ファイルが外部から見えないことを確認できた
+・ローカル環境、Git管理、さくらテスト環境をつなぐ第一段階が完了した
+・Version 1.4 は「テストアップ確認済み」として区切れる状態になった
+
+【次回予定】
+
+・さくらテスト環境で管理画面のシステム情報を確認する
+・GitHubへ Version 1.4 の作業内容を送る
+・本番公開へ向けた最終確認項目を整理する
+
+---
+
 ## 2026-07-20
 
 ### Version 1.4 admin画面保護の第一段階
