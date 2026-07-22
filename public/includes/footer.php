@@ -6,7 +6,7 @@
     </ul>
 </nav>
 
-<footer>CardCMS Version 1.4</footer>
+<footer>CardCMS Version 1.5</footer>
 
 <script>
 const cardGrid = document.getElementById('card-grid');

@@ -107,16 +107,48 @@ function mailHeaderAddress($email)
     return str_replace(["\r", "\n"], "", (string)$email);
 }
 
-function encodeMailHeader($value)
+function mailHeaderAddressList($emails)
 {
-    if (function_exists("mb_encode_mimeheader")) {
-        return mb_encode_mimeheader((string)$value);
+    if (is_string($emails)) {
+        $emails = preg_split("/[,;]/", $emails);
+    } elseif (!is_array($emails)) {
+        $emails = [];
     }
 
-    return mailHeaderAddress($value);
+    $addresses = [];
+
+    foreach ($emails as $email) {
+        $email = trim(mailHeaderAddress($email));
+
+        if ($email !== "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $addresses[] = $email;
+        }
+    }
+
+    return array_values(array_unique($addresses));
 }
 
-function buildMailBody($values)
+function encodeMailHeader($value)
+{
+    $value = mailHeaderAddress($value);
+
+    if (function_exists("mb_encode_mimeheader")) {
+        return mb_encode_mimeheader($value);
+    }
+
+    return $value;
+}
+
+function applyMailTemplate($text, $values)
+{
+    return str_replace(
+        ["{name}", "{phone}", "{address}", "{email}", "{message}"],
+        [$values["name"], $values["phone"], $values["address"], $values["email"], $values["message"]],
+        (string)$text
+    );
+}
+
+function buildAdminMailBody($values)
 {
     return implode("\n", [
         "ホームページからお問い合わせがありました。",
@@ -141,34 +173,100 @@ function buildMailBody($values)
     ]);
 }
 
+function buildAutoReplyMailBody($values, $config)
+{
+    $message = trim(applyMailTemplate((string)($config["auto_reply_body"] ?? ""), $values));
+
+    if ($message === "") {
+        $message = implode("\n", [
+            $values["name"] . " 様",
+            "",
+            "お問い合わせありがとうございます。",
+            "内容を確認のうえ、担当者よりご連絡いたします。",
+        ]);
+    }
+
+    return implode("\n", [
+        $message,
+        "",
+        "----- お問い合わせ内容 -----",
+        "",
+        "お名前",
+        $values["name"],
+        "",
+        "電話番号",
+        $values["phone"],
+        "",
+        "住所",
+        $values["address"],
+        "",
+        "メールアドレス",
+        $values["email"],
+        "",
+        "お問い合わせ内容",
+        $values["message"],
+    ]);
+}
+
+function sendPlainTextMail($to, $subject, $body, $headers)
+{
+    $subject = mailHeaderAddress($subject);
+    $headerText = implode("\r\n", $headers);
+
+    if (function_exists("mb_send_mail")) {
+        return mb_send_mail($to, $subject, $body, $headerText);
+    }
+
+    return mail($to, encodeMailHeader($subject), $body, $headerText);
+}
+
 function sendContactMail($values, &$errorMessage)
 {
     $config = contactConfig();
     $to = mailHeaderAddress($config["to"] ?? "");
     $from = mailHeaderAddress($config["from"] ?? "");
     $fromName = mailHeaderAddress($config["from_name"] ?? "有限会社市場工芸");
-    $subject = (string)($config["subject"] ?? "ホームページからのお問い合わせ");
+    $replyTo = mailHeaderAddress($config["reply_to"] ?? $from);
+    $adminSubject = applyMailTemplate($config["admin_subject"] ?? $config["subject"] ?? "WEBよりお問い合わせ", $values);
+    $autoReplySubject = applyMailTemplate($config["auto_reply_subject"] ?? "お問い合わせありがとうございました。", $values);
+    $autoReplyEnabled = !array_key_exists("auto_reply_enabled", $config) || (bool)$config["auto_reply_enabled"];
+    $bccAddresses = mailHeaderAddressList($config["bcc"] ?? []);
 
     if ($to === "" || $from === "") {
         $errorMessage = "送信先メールアドレスの設定がまだ完了していません。";
         return false;
     }
 
-    $headers = [
+    $adminHeaders = [
         "From: " . encodeMailHeader($fromName) . " <" . $from . ">",
         "Reply-To: " . mailHeaderAddress($values["email"]),
-        "Content-Type: text/plain; charset=UTF-8",
-        "Content-Transfer-Encoding: 8bit",
-        "X-Mailer: PHP/" . phpversion(),
     ];
 
-    $body = buildMailBody($values);
-
-    if (function_exists("mb_send_mail")) {
-        return mb_send_mail($to, $subject, $body, implode("\r\n", $headers));
+    if (!empty($bccAddresses)) {
+        $adminHeaders[] = "Bcc: " . implode(", ", $bccAddresses);
     }
 
-    return mail($to, encodeMailHeader($subject), $body, implode("\r\n", $headers));
+    $adminHeaders[] = "Content-Type: text/plain; charset=UTF-8";
+    $adminHeaders[] = "Content-Transfer-Encoding: 8bit";
+    $adminHeaders[] = "X-Mailer: PHP/" . phpversion();
+
+    if (!sendPlainTextMail($to, $adminSubject, buildAdminMailBody($values), $adminHeaders)) {
+        return false;
+    }
+
+    if ($autoReplyEnabled) {
+        $autoReplyHeaders = [
+            "From: " . encodeMailHeader($fromName) . " <" . $from . ">",
+            "Reply-To: " . ($replyTo !== "" ? $replyTo : $from),
+            "Content-Type: text/plain; charset=UTF-8",
+            "Content-Transfer-Encoding: 8bit",
+            "X-Mailer: PHP/" . phpversion(),
+        ];
+
+        sendPlainTextMail($values["email"], $autoReplySubject, buildAutoReplyMailBody($values, $config), $autoReplyHeaders);
+    }
+
+    return true;
 }
 
 $action = (string)($_POST["contact_action"] ?? "input");

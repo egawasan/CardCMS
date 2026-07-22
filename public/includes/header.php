@@ -1,8 +1,15 @@
+<?php
+// テスト公開中は検索結果へ登録されないようにする。本番公開時は外す。
+if (!headers_sent()) {
+    header("X-Robots-Tag: noindex, nofollow", true);
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>有限会社市場工芸</title>
 <style>
 *{
