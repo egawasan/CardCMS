@@ -326,6 +326,212 @@ main{
     text-underline-offset:3px;
 }
 
+.contact-form-link{
+    margin:18px 0 0;
+    text-align:center;
+}
+
+.contact-form-link a{
+    display:inline-block;
+    min-width:220px;
+    padding:12px 18px;
+    border-radius:6px;
+    background:#2d9fd8;
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.contact-page{
+    width:92%;
+    max-width:860px;
+    margin:28px auto 48px;
+}
+
+.contact-panel{
+    background:white;
+    border:1px solid #d9e0e7;
+    border-radius:8px;
+    padding:30px;
+    box-shadow:0 4px 12px rgba(31,45,61,.08);
+}
+
+.contact-panel h1{
+    margin:0 0 12px;
+    padding-bottom:12px;
+    border-bottom:1px solid #e4e9ef;
+    color:#1f2d3d;
+    font-size:28px;
+    text-align:center;
+}
+
+.contact-panel h2{
+    margin:0 0 12px;
+    color:#1f2d3d;
+    font-size:23px;
+}
+
+.contact-lead{
+    margin:0 0 20px;
+    color:#4f5f6f;
+    font-size:17px;
+    text-align:center;
+}
+
+.contact-lead span{
+    display:block;
+    margin-top:4px;
+    color:#b42318;
+    font-size:14px;
+}
+
+.contact-form{
+    display:grid;
+    gap:18px;
+}
+
+.contact-form label{
+    display:grid;
+    gap:7px;
+}
+
+.contact-form span{
+    color:#2f3d4a;
+    font-weight:bold;
+}
+
+.contact-form strong{
+    color:#b42318;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    border:1px solid #cfd9e3;
+    border-radius:6px;
+    padding:12px 13px;
+    color:#25313d;
+    font:inherit;
+    background:white;
+}
+
+.contact-form textarea{
+    resize:vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    outline:3px solid rgba(45,159,216,.18);
+    border-color:#2d9fd8;
+}
+
+.contact-form em,
+.form-error{
+    color:#b42318;
+    font-style:normal;
+    font-weight:bold;
+}
+
+.website-field{
+    position:absolute;
+    left:-9999px;
+    width:1px;
+    height:1px;
+    opacity:0;
+}
+
+.error-box{
+    margin:0 0 18px;
+    border:1px solid #f0b8b8;
+    border-radius:6px;
+    background:#fff5f5;
+    padding:12px 14px;
+    color:#b42318;
+    font-weight:bold;
+}
+
+.error-box p{
+    margin:0;
+}
+
+.confirm-list{
+    margin:0;
+    border:1px solid #d9e0e7;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.confirm-list div{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    border-bottom:1px solid #e4e9ef;
+}
+
+.confirm-list div:last-child{
+    border-bottom:none;
+}
+
+.confirm-list dt,
+.confirm-list dd{
+    margin:0;
+    padding:13px 15px;
+}
+
+.confirm-list dt{
+    background:#f3f6f9;
+    color:#4f5f6f;
+    font-weight:bold;
+}
+
+.confirm-list dd{
+    white-space:pre-wrap;
+}
+
+.form-actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:6px;
+}
+
+.button-primary,
+.button-secondary{
+    display:inline-block;
+    min-width:150px;
+    border:0;
+    border-radius:6px;
+    padding:12px 18px;
+    font:inherit;
+    font-weight:bold;
+    text-align:center;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.button-primary{
+    background:#2d9fd8;
+    color:white;
+}
+
+.button-secondary{
+    background:#eef2f7;
+    color:#2f3d4a;
+}
+
+.contact-complete{
+    text-align:center;
+}
+
+.contact-complete p{
+    margin:0 0 14px;
+}
+
+.contact-complete a{
+    color:#21618c;
+    font-weight:bold;
+}
+
 .empty{
     background:white;
     border:1px solid #d9e0e7;
@@ -478,6 +684,26 @@ footer{
 
     .card-info-continuation .card-info-label{
         display:none;
+    }
+
+    .contact-panel{
+        padding:22px 18px;
+    }
+
+    .contact-panel h1{
+        font-size:24px;
+    }
+
+    .confirm-list div{
+        grid-template-columns:1fr;
+    }
+
+    .confirm-list dt{
+        padding-bottom:6px;
+    }
+
+    .confirm-list dd{
+        padding-top:6px;
     }
 
     .toolbar{

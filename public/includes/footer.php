@@ -1,7 +1,7 @@
 <nav class="fixed-menu" aria-label="固定メニュー">
     <ul>
-        <li><a href="#head-office-factory" class="factory">本社・工場</a></li>
-        <li><a href="#contact" class="mail">メール</a></li>
+        <li><a href="index.php#head-office-factory" class="factory">本社・工場</a></li>
+        <li><a href="contact.php" class="mail">メール</a></li>
         <li><a href="tel:073-477-5000" class="tel">電話</a></li>
     </ul>
 </nav>
@@ -128,6 +128,18 @@ function createBodyElement(text){
     return container;
 }
 
+function createContactLink(){
+    const wrapper = document.createElement('p');
+    wrapper.className = 'contact-form-link';
+
+    const link = document.createElement('a');
+    link.href = 'contact.php';
+    link.textContent = 'お問い合わせフォームへ';
+
+    wrapper.appendChild(link);
+    return wrapper;
+}
+
 function getImageSrc(imagePath){
     if (/^https?:\/\//.test(imagePath)) {
         return imagePath;
@@ -209,6 +221,10 @@ function createCard(card){
         body.appendChild(createBodyElement(card.body));
     }
 
+    if (card.slug === 'contact') {
+        body.appendChild(createContactLink());
+    }
+
     const imagePaths = getCardImages(card);
     const showImage = imagePaths.length > 0;
     const showBody = layout !== 'Hero' || card.body;
@@ -242,18 +258,20 @@ function showEmptyMessage(){
     cardGrid.appendChild(empty);
 }
 
-const publishedCards = Array.isArray(window.cardData) ? window.cardData : [];
+if (cardGrid) {
+    const publishedCards = Array.isArray(window.cardData) ? window.cardData : [];
 
-if (cardCount) {
-    cardCount.textContent = publishedCards.length + '件表示';
-}
+    if (cardCount) {
+        cardCount.textContent = publishedCards.length + '件表示';
+    }
 
-if (publishedCards.length === 0) {
-    showEmptyMessage();
-} else {
-    publishedCards.forEach(card => {
-        cardGrid.appendChild(createCard(card));
-    });
+    if (publishedCards.length === 0) {
+        showEmptyMessage();
+    } else {
+        publishedCards.forEach(card => {
+            cardGrid.appendChild(createCard(card));
+        });
+    }
 }
 </script>
 
