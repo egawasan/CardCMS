@@ -36,6 +36,8 @@ body{
     background:white;
     border-bottom:1px solid #d9e0e7;
     padding:18px;
+    position:relative;
+    z-index:120;
 }
 
 .header-inner{
@@ -45,12 +47,94 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    position:relative;
+    min-height:58px;
 }
 
 .site-logo{
     display:block;
-    width:min(310px, 80vw);
+    width:min(310px, calc(100vw - 128px));
     height:auto;
+}
+
+.menu-toggle{
+    position:absolute;
+    right:0;
+    top:50%;
+    width:46px;
+    height:46px;
+    transform:translateY(-50%);
+    border:1px solid #cfd9e3;
+    border-radius:6px;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    display:block;
+    width:22px;
+    height:2px;
+    background:#25313d;
+    border-radius:2px;
+    transition:transform .18s ease, opacity .18s ease;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1){
+    transform:translateY(7px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3){
+    transform:translateY(-7px) rotate(-45deg);
+}
+
+.header-menu{
+    position:absolute;
+    top:calc(100% - 6px);
+    right:4%;
+    width:min(280px, 92vw);
+    border:1px solid #d9e0e7;
+    border-radius:8px;
+    background:white;
+    box-shadow:0 12px 26px rgba(31,45,61,.18);
+    overflow:hidden;
+}
+
+.header-menu[hidden]{
+    display:none;
+}
+
+.header-menu ul{
+    list-style:none;
+    margin:0;
+    padding:8px 0;
+}
+
+.header-menu a{
+    display:block;
+    padding:13px 18px;
+    color:#25313d;
+    font-weight:bold;
+    text-decoration:none;
+    border-bottom:1px solid #edf1f5;
+}
+
+.header-menu li:last-child a{
+    border-bottom:none;
+}
+
+.header-menu a:hover,
+.header-menu a:focus{
+    background:#f3f6f9;
+    outline:none;
 }
 
 main{
@@ -651,6 +735,25 @@ footer{
         gap:18px;
     }
 
+    .site-header{
+        padding:14px 12px;
+    }
+
+    .header-inner{
+        width:100%;
+    }
+
+    .menu-toggle{
+        right:4px;
+        width:42px;
+        height:42px;
+    }
+
+    .header-menu{
+        right:12px;
+        width:calc(100vw - 24px);
+    }
+
     .card-image-list{
         gap:0;
         padding:0 0 4px;
@@ -740,5 +843,19 @@ footer{
             class="site-logo"
             src="../uploads/9b7d91cff75d2687ea6b30e403f540c9.png"
             alt="有限会社市場工芸">
+        <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="header-menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
+    <nav class="header-menu" id="header-menu" aria-label="ヘッダーメニュー" hidden>
+        <ul>
+            <li><a href="index.php">ホーム</a></li>
+            <li><a href="index.php#business-services">事業内容</a></li>
+            <li><a href="index.php#head-office-factory">本社・工場</a></li>
+            <li><a href="index.php#company-profile">会社概要</a></li>
+            <li><a href="contact.php">お問い合わせ</a></li>
+        </ul>
+    </nav>
 </header>

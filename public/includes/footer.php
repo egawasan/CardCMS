@@ -6,9 +6,54 @@
     </ul>
 </nav>
 
-<footer>CardCMS Version 1.5</footer>
+<footer>CardCMS Version 1.6</footer>
 
 <script>
+const menuToggle = document.querySelector('.menu-toggle');
+const headerMenu = document.getElementById('header-menu');
+
+if (menuToggle && headerMenu) {
+    function closeHeaderMenu(){
+        headerMenu.hidden = true;
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'メニューを開く');
+    }
+
+    function openHeaderMenu(){
+        headerMenu.hidden = false;
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'メニューを閉じる');
+    }
+
+    menuToggle.addEventListener('click', event => {
+        event.stopPropagation();
+
+        if (headerMenu.hidden) {
+            openHeaderMenu();
+        } else {
+            closeHeaderMenu();
+        }
+    });
+
+    headerMenu.addEventListener('click', event => {
+        if (event.target.closest('a')) {
+            closeHeaderMenu();
+        }
+    });
+
+    document.addEventListener('click', event => {
+        if (!headerMenu.hidden && !event.target.closest('.site-header')) {
+            closeHeaderMenu();
+        }
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            closeHeaderMenu();
+        }
+    });
+}
+
 const cardGrid = document.getElementById('card-grid');
 const cardCount = document.getElementById('card-count');
 
