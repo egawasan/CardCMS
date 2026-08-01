@@ -1,35 +1,5 @@
 [
     {
-        "id": 1783491523,
-        "card_number": "000001",
-        "card_type": "お知らせ",
-        "layout": "ImageLeft",
-        "slug": "cardcms-first",
-        "title": "CardCMS第一号（修正版）",
-        "category": "お知らせ",
-        "body": "初めて保存できました。",
-        "sort_order": 900,
-        "published": false,
-        "image": "1783909800_1783814917_xlh343_01_l.jpg",
-        "created_at": "2026-07-08 15:18:43",
-        "updated_at": "2026-07-08 15:18:43"
-    },
-    {
-        "id": 1783814917,
-        "card_number": "000003",
-        "card_type": "お知らせ",
-        "layout": "Gallery",
-        "slug": "photo2",
-        "title": "photo2",
-        "category": "お知らせ",
-        "body": "",
-        "image": "1783818225_IMG_2835.jpg",
-        "sort_order": 910,
-        "published": false,
-        "created_at": "2026-07-12 09:08:37",
-        "updated_at": "2026-07-12 09:08:37"
-    },
-    {
         "id": 1784016316,
         "card_number": "000005",
         "card_type": "トップページ",
