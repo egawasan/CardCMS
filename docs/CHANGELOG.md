@@ -17,6 +17,17 @@
 - 正式メールアドレス確定前のため、編集・保存機能は次段階で検討する
 - `config/contact.php` は引き続きGitHubへ送らない
 
+### 確認
+- GitHubへ Version 1.7 の作業内容を送信
+- さくらテスト環境へ `admin/contact_settings.php`、`admin/index.php`、`admin/card_list.php` を反映
+- さくら側で未ログイン時に管理画面がログイン画面へ戻ることを確認
+- さくら側で公開ページが `200 OK` で開くことを確認
+- さくら側でテスト版の `noindex, nofollow` が維持されていることを確認
+- さくら側で `database/cards.json` が外部から直接見えないことを確認
+
+### 未確定
+- 正式な送信先、BCC、送信元、返信先メールアドレスは先方確認待ち
+
 ---
 
 ## Version 1.6（2026-07-24 ヘッダーメニュー追加）
