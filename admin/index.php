@@ -98,6 +98,8 @@ cardcms_require_admin();
 
 		<a href="image_manager.php">🖼 画像管理</a>
 
+		<a href="contact_settings.php">✉️ お問い合わせメール設定</a>
+
 		<a href="settings.php">⚙️ システム情報</a>
 
 		<a href="logout.php">ログアウト</a>

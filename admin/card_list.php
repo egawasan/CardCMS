@@ -271,6 +271,12 @@ CardCMS 管理画面
 
 </a>
 
+<a href="index.php" class="button">
+
+メニューへ戻る
+
+</a>
+
 </div>
 
 </body>
