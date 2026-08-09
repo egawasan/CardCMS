@@ -59,6 +59,42 @@ if (!is_array($additionalImages)) {
     $additionalImages = [];
 }
 
+$uploadDir = __DIR__ . "/../uploads";
+$uploadedImages = glob($uploadDir . "/*.{jpg,jpeg,png,gif,webp}", GLOB_BRACE);
+
+if ($uploadedImages === false) {
+    $uploadedImages = [];
+}
+
+usort($uploadedImages, function ($a, $b) {
+    return filemtime($b) <=> filemtime($a);
+});
+
+$uploadedImageNames = array_map("basename", $uploadedImages);
+$uploadedImageNameSet = array_flip($uploadedImageNames);
+$selectedCardImages = [];
+$manualAdditionalImages = [];
+
+$currentImage = $editCard['image'] ?? "";
+$currentImageName = basename((string)$currentImage);
+
+if ($currentImageName !== "" && isset($uploadedImageNameSet[$currentImageName])) {
+	$selectedCardImages[] = $currentImageName;
+}
+
+foreach ($additionalImages as $additionalImage) {
+	$additionalImageName = basename((string)$additionalImage);
+
+	if ($additionalImageName !== "" && isset($uploadedImageNameSet[$additionalImageName])) {
+		$selectedCardImages[] = $additionalImageName;
+	} elseif (preg_match("/^https?:\/\//", (string)$additionalImage) || !isset($uploadedImageNameSet[$additionalImageName])) {
+		$manualAdditionalImages[] = $additionalImage;
+	}
+}
+
+$selectedCardImages = array_values(array_unique($selectedCardImages));
+$selectedCardImageSet = array_flip($selectedCardImages);
+
 $cardTypeOptions = ["トップページ", "お知らせ", "サービス", "会社情報", "お問い合わせ", "採用"];
 $layoutOptions = ["Hero", "Text", "ImageLeft", "ImageRight", "Gallery", "Contact"];
 
@@ -159,6 +195,13 @@ textarea{
 
 }
 
+.current-image-name{
+	margin-top:8px;
+	font-size:13px;
+	color:#666;
+	word-break:break-all;
+}
+
 .button-area{
 
 	text-align:center;
@@ -210,6 +253,114 @@ button{
 	border-radius:6px;
 	background:#f6f8fb;
 	color:#555;
+}
+
+.image-choice-actions{
+	display:flex;
+	flex-wrap:wrap;
+	gap:10px;
+	margin-bottom:14px;
+}
+
+.image-choice-actions label{
+	align-items:center;
+	background:#f6f8fb;
+	border:1px solid #d9e0e7;
+	border-radius:6px;
+	cursor:pointer;
+	display:flex;
+	font-weight:normal;
+	gap:8px;
+	padding:10px 12px;
+}
+
+.image-choice-grid{
+	display:grid;
+	gap:12px;
+	grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));
+}
+
+.image-choice-card{
+	border:2px solid #d9e0e7;
+	border-radius:8px;
+	cursor:pointer;
+	display:block;
+	overflow:hidden;
+	background:white;
+	position:relative;
+}
+
+.image-choice-card input{
+	position:absolute;
+	opacity:0;
+	pointer-events:none;
+}
+
+.image-choice-card:has(input:checked){
+	border-color:#3498db;
+	box-shadow:0 0 0 2px rgba(52, 152, 219, .18);
+}
+
+.image-choice-card img{
+	aspect-ratio:4 / 3;
+	display:block;
+	object-fit:cover;
+	width:100%;
+}
+
+.image-choice-name{
+	background:#f6f8fb;
+	color:#555;
+	font-size:12px;
+	line-height:1.35;
+	padding:8px;
+	word-break:break-all;
+}
+
+.image-order-badge{
+	align-items:center;
+	background:#3498db;
+	border-radius:999px;
+	color:white;
+	display:none;
+	font-size:14px;
+	font-weight:bold;
+	height:30px;
+	justify-content:center;
+	left:8px;
+	position:absolute;
+	top:8px;
+	width:30px;
+}
+
+.card-image-choice.is-selected .image-order-badge{
+	display:flex;
+}
+
+.selected-image-order{
+	background:#f6f8fb;
+	border:1px solid #d9e0e7;
+	border-radius:8px;
+	margin-top:14px;
+	padding:12px 14px;
+}
+
+.selected-image-order-title{
+	color:#555;
+	font-weight:bold;
+	margin-bottom:8px;
+}
+
+.selected-image-order ol{
+	margin:0;
+	padding-left:22px;
+}
+
+.selected-image-order li{
+	color:#555;
+	font-size:13px;
+	line-height:1.7;
+	word-break:break-all;
 }
 
 footer{
@@ -389,6 +540,10 @@ CardCMS 管理画面
     src="<?php echo h(imageSrc($editCard['image'])); ?>"
     width="200">
 
+<div class="current-image-name">
+	現在の画像ファイル名：<?php echo h($editCard['image']); ?>
+</div>
+
 <?php else: ?>
 
 画像は登録されていません
@@ -399,25 +554,88 @@ CardCMS 管理画面
 
 <div class="row">
 
-<label>新しい画像</label><br>
+<label>このカードで使う画像（1枚目が代表画像）</label>
 
-<input type="file" name="image">
+<div class="help-text">
+使う画像を写真で選びます。番号1が代表画像、番号2以降が追加画像として表示されます。
+</div>
+
+<input
+	type="hidden"
+	name="card_images_order"
+	id="card-images-order"
+	value="<?php echo h(implode("\n", $selectedCardImages)); ?>">
 
 <input
 	type="hidden"
 	name="current_image"
 	value="<?php echo h($editCard['image'] ?? ""); ?>">
 
+<?php if (count($uploadedImages) > 0): ?>
+
+<div class="image-choice-grid">
+
+<?php foreach ($uploadedImages as $imagePath): ?>
+<?php $filename = basename($imagePath); ?>
+
+	<label class="image-choice-card card-image-choice">
+		<span class="image-order-badge" aria-hidden="true"></span>
+		<input
+			type="checkbox"
+			class="card-image-checkbox"
+			value="<?php echo h($filename); ?>"
+			<?php if (isset($selectedCardImageSet[$filename])) echo "checked"; ?>>
+		<img
+			src="<?php echo h(imageSrc($filename)); ?>"
+			alt="<?php echo h($filename); ?>">
+		<div class="image-choice-name"><?php echo h($filename); ?></div>
+	</label>
+
+<?php endforeach; ?>
+
+</div>
+
+<div class="selected-image-order">
+	<div class="selected-image-order-title">画像の表示順</div>
+	<ol id="card-image-order-list">
+		<li>画像は選択されていません。</li>
+	</ol>
+</div>
+
+<?php else: ?>
+
+<div class="info-text">
+アップロード済み画像はまだありません。画像管理画面から画像を追加してください。
+</div>
+
+<?php endif; ?>
+
 </div>
 
 <div class="row">
 
-<label>追加画像（1行に1つ）</label>
+<label>新しい画像をアップロード</label><br>
+
+<div class="help-text">
+Mac内の画像を新しく追加する場合はこちらを使います。保存後、この画像が1枚目として使われます。
+</div>
+
+<input type="file" name="image">
+
+</div>
+
+<div class="row">
+
+<label>追加画像（URLや直接入力）</label>
+
+<div class="help-text">
+外部URLなど、画像管理にない画像だけここへ1行ずつ入力します。
+</div>
 
 <textarea
     name="additional_images"
     class="small-textarea"
-    placeholder="例: https://example.com/image.jpg"><?php echo h(implode("\n", $additionalImages)); ?></textarea>
+    placeholder="例: https://example.com/image.jpg"><?php echo h(implode("\n", $manualAdditionalImages)); ?></textarea>
 
 </div>
 
@@ -465,6 +683,89 @@ CardCMS 管理画面
 CardCMS Version 1.4
 
 </footer>
+
+<script>
+const cardImageChoices = Array.from(document.querySelectorAll('.card-image-choice'));
+const cardImageCheckboxes = Array.from(document.querySelectorAll('.card-image-checkbox'));
+const cardImageOrderList = document.getElementById('card-image-order-list');
+const cardImagesOrderInput = document.getElementById('card-images-order');
+const cardImageChoiceByName = new Map();
+
+cardImageChoices.forEach(choice => {
+	const checkbox = choice.querySelector('.card-image-checkbox');
+
+	if (checkbox) {
+		cardImageChoiceByName.set(checkbox.value, choice);
+	}
+});
+
+let cardImageOrder = cardImagesOrderInput
+	? cardImagesOrderInput.value.split(/\r?\n/).map(value => value.trim()).filter(Boolean)
+	: [];
+
+function updateCardImageOrder(){
+	const checkedValues = cardImageCheckboxes
+		.filter(checkbox => checkbox.checked)
+		.map(checkbox => checkbox.value);
+
+	cardImageOrder = cardImageOrder.filter(filename => checkedValues.includes(filename));
+
+	checkedValues.forEach(filename => {
+		if (!cardImageOrder.includes(filename)) {
+			cardImageOrder.push(filename);
+		}
+	});
+
+	cardImageChoices.forEach(choice => {
+		choice.classList.remove('is-selected');
+		const badge = choice.querySelector('.image-order-badge');
+
+		if (badge) {
+			badge.textContent = '';
+		}
+	});
+
+	if (cardImagesOrderInput) {
+		cardImagesOrderInput.value = cardImageOrder.join('\n');
+	}
+
+	if (!cardImageOrderList) {
+		return;
+	}
+
+	cardImageOrderList.innerHTML = '';
+
+	if (cardImageOrder.length === 0) {
+		const item = document.createElement('li');
+		item.textContent = '画像は選択されていません。';
+		cardImageOrderList.appendChild(item);
+		return;
+	}
+
+	cardImageOrder.forEach((filename, index) => {
+		const choice = cardImageChoiceByName.get(filename);
+
+		if (choice) {
+			choice.classList.add('is-selected');
+			const badge = choice.querySelector('.image-order-badge');
+
+			if (badge) {
+				badge.textContent = String(index + 1);
+			}
+		}
+
+		const item = document.createElement('li');
+		item.textContent = (index === 0 ? '代表画像: ' : '追加画像: ') + filename;
+		cardImageOrderList.appendChild(item);
+	});
+}
+
+cardImageCheckboxes.forEach(checkbox => {
+	checkbox.addEventListener('change', updateCardImageOrder);
+});
+
+updateCardImageOrder();
+</script>
 
 </body>
 </html>

@@ -27,6 +27,58 @@ function parseAdditionalImages($value)
     return array_values(array_unique($images));
 }
 
+function parseAdditionalUploadedImages($values)
+{
+    if (!is_array($values)) {
+        return [];
+    }
+
+    $images = [];
+
+    foreach ($values as $value) {
+        $filename = basename(trim((string)$value));
+
+        if ($filename !== "" && isAllowedUploadedImage($filename)) {
+            $images[] = $filename;
+        }
+    }
+
+    return array_values(array_unique($images));
+}
+
+function parseCardImagesOrder($value)
+{
+    $lines = preg_split("/\R/", (string)$value);
+    $images = [];
+
+    foreach ($lines as $line) {
+        $filename = basename(trim($line));
+
+        if ($filename !== "" && isAllowedUploadedImage($filename)) {
+            $images[] = $filename;
+        }
+    }
+
+    return array_values(array_unique($images));
+}
+
+function isAllowedUploadedImage($filename)
+{
+    $filename = basename((string)$filename);
+
+    if ($filename === "") {
+        return false;
+    }
+
+    $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+    if (!in_array($extension, ["jpg", "jpeg", "png", "gif", "webp"], true)) {
+        return false;
+    }
+
+    return is_file(__DIR__ . "/../uploads/" . $filename);
+}
+
 $id = $_POST['id'];
 $title = $_POST['title'];
 $card_type = $_POST['card_type'] ?? 'お知らせ';
@@ -36,11 +88,36 @@ $category = $_POST['category'];
 $body = $_POST['body'];
 $sort_order = $_POST['sort_order'];
 $published = isset($_POST['published']);
-$additional_images = parseAdditionalImages($_POST['additional_images'] ?? "");
+$has_card_images_order = array_key_exists('card_images_order', $_POST);
+$card_images_order = parseCardImagesOrder($_POST['card_images_order'] ?? "");
+$uploaded_image = trim($_POST['uploaded_image'] ?? "");
+$manual_additional_images = parseAdditionalImages($_POST['additional_images'] ?? "");
+$additional_images = $manual_additional_images;
 $now = date("Y-m-d H:i:s");
 
 // 現在の画像
-$image = $_POST['current_image'];
+$image = $_POST['current_image'] ?? "";
+
+// 新しい画像選択画面では、1枚目を代表画像、2枚目以降を追加画像として保存する
+if ($has_card_images_order) {
+    $image = $card_images_order[0] ?? "";
+    $additional_images = array_values(array_unique(array_merge(
+        array_slice($card_images_order, 1),
+        $manual_additional_images
+    )));
+} else {
+    $additional_images = array_values(array_unique(array_merge(
+        parseAdditionalUploadedImages($_POST['additional_uploaded_images'] ?? []),
+        $manual_additional_images
+    )));
+
+    // 旧方式: 画像管理でアップロード済みの画像を選んだ場合
+    if ($uploaded_image === "__none__") {
+        $image = "";
+    } elseif ($uploaded_image !== "" && isAllowedUploadedImage($uploaded_image)) {
+        $image = basename($uploaded_image);
+    }
+}
 
 // 新しい画像が選択された場合
 if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
