@@ -8,6 +8,32 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 
 ---
 
+## 2026-08-10
+
+### Version 1.8 さくらテスト環境反映
+
+【本日の作業】
+
+・さくらテスト環境へ `admin/image_manager.php`、`admin/card_edit.php`、`api/update_card.php` をアップロード
+・さくら側の `admin/image_manager.php` がログイン画面へ正常に戻ることを確認
+・さくら側の `admin/card_edit.php` がログイン画面へ正常に戻ることを確認
+・さくら側の `api/update_card.php` がログイン画面へ正常に戻ることを確認
+・公開ページ `public/index.php` が `200 OK` で開くことを確認
+・テスト版の `noindex, nofollow` が維持されていることを確認
+・`database/cards.json` が外部から直接見えないことを確認
+
+【成果】
+
+・画像管理機能の改善をさくらテスト環境へ反映できた
+・公開ページとデータ保護の状態に問題がないことを確認できた
+
+【次回予定】
+
+・さくら側の管理画面へログインして、画像管理とカード編集を目視確認する
+・問題なければGitHubへ送信する
+
+---
+
 ## 2026-08-08
 
 ### Version 1.8 画像管理ドラッグアップロード
@@ -48,12 +74,8 @@ WordPressサイト（https://ichiba-k.jp）のCardCMSへの移行を目標とし
 
 【次回予定】
 
-・ローカル管理画面で画像アップロードを目視確認する
-・ローカル管理画面でアップロード済み画像をカードへ割り当てる操作を目視確認する
-・問題なければGitに記録する
-・さくらテスト環境へ `admin/image_manager.php`、`admin/card_edit.php`、`api/update_card.php` を反映する
-
----
+・さくらテスト環境で管理画面から画像アップロード、画像選択、未使用画像削除を確認する
+・問題なければGitHubへ送信する
 
 ## 2026-08-01
 

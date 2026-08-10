@@ -30,6 +30,9 @@
 - ログイン済み状態で画像管理画面のHTML生成を確認
 - `admin/card_edit.php` と `api/update_card.php` のPHP構文を確認
 - カード編集画面にアップロード済み画像の選択欄が表示されることを確認
+- さくらテスト環境へ `admin/image_manager.php`、`admin/card_edit.php`、`api/update_card.php` を反映
+- さくら側で管理画面系ファイルがログイン画面へ正常に戻ることを確認
+- さくら側で公開ページが `200 OK`、`database/cards.json` が `403` であることを確認
 
 ---
 
